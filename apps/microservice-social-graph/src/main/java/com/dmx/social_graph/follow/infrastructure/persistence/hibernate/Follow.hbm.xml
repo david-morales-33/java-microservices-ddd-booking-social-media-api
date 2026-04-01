@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dmx.social_graph.follow.domain.Follow" table="tbl_follow">
+        <composite-id name="id" class="com.dmx.social_graph.follow.domain.FollowId" access="field">
+            <key-property column="flw_id" name="value" length="36" access="field"/>
+        </composite-id>
+        <component name="userId" class="com.dmx.social_graph.follow.domain.UserId" access="field">
+            <property name="value" column="flw_user_id" type="string" access="field" length="36" index="idx_followed" unique-key="uk_follow_pair"/>
+        </component>
+        <component name="followerId" class="com.dmx.social_graph.follow.domain.UserId" access="field">
+            <property name="value" column="flw_follower_id" type="string" access="field" length="36" index="idx_follower" unique-key="uk_follow_pair"/>
+        </component>
+        <component name="createdAt" class="com.dmx.social_graph.follow.domain.FollowInstant" access="field">
+            <property name="value" column="flw_create_at" type="timestamp" access="field"/>
+        </component>
+    </class>
+</hibernate-mapping>

@@ -6,6 +6,9 @@
       <list>
         <option value="$PROJECT_DIR$/libs/shared-kernel/pom.xml" />
         <option value="$PROJECT_DIR$/libs/shared-bus/pom.xml" />
+        <option value="$PROJECT_DIR$/apps/microservice-social-graph/pom.xml" />
+        <option value="$PROJECT_DIR$/libs/bus/pom.xml" />
+        <option value="$PROJECT_DIR$/libs/persistence/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

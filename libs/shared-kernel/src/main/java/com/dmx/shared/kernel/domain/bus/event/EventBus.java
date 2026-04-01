@@ -1,6 +1,0 @@
-package com.dmx.shared.kernel.domain.bus.event;
-import java.util.List;
-
-public interface EventBus {
-    void publish(final List<DomainEvent> events);
-}

@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dmx.social_graph.block.domain.Block" table="tbl_block">
+        <composite-id name="blockId" class="com.dmx.social_graph.block.domain.BlockId" access="field">
+            <key-property column="blk_id" name="value" length="36" access="field"/>
+        </composite-id>
+        <component name="userId" class="com.dmx.social_graph.block.domain.UserId" access="field">
+            <property name="value" column="blk_user_id" type="string" access="field" length="36" index="idx_blocker" unique-key="uk_block_pair"/>
+        </component>
+        <component name="blockedId" class="com.dmx.social_graph.block.domain.UserId" access="field">
+            <property name="value" column="blk_blocked_id" type="string" access="field" length="36" index="idx_blocked" unique-key="uk_block_pair"/>
+        </component>
+        <component name="createAt" class="com.dmx.social_graph.block.domain.BlockInstant" access="field">
+            <property name="value" column="blk_create_at" type="timestamp" access="field"/>
+        </component>
+    </class>
+</hibernate-mapping>
