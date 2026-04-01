@@ -1,6 +1,6 @@
 package com.dmx.social_graph.shared.domain.events;
 
-import com.dmx.bus.event.DomainEvent;
+import com.dmx.shared.kernel.events.DomainEvent;
 
 import java.io.Serializable;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package com.dmx.social_graph.shared.infrastructure.bus.event.kafka;
 
-import com.dmx.bus.event.DomainEvent;
+import com.dmx.shared.kernel.events.DomainEvent;
 import com.dmx.social_graph.shared.infrastructure.bus.event.DomainEventJsonSerializer;
 import org.springframework.kafka.core.KafkaTemplate;
 

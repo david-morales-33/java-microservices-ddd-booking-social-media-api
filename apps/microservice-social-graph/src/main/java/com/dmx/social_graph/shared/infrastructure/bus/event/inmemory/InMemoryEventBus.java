@@ -1,6 +1,6 @@
 package com.dmx.social_graph.shared.infrastructure.bus.event.inmemory;
 
-import com.dmx.bus.event.DomainEvent;
+import com.dmx.shared.kernel.events.DomainEvent;
 import com.dmx.bus.event.DomainEventSubscriber;
 import com.dmx.bus.event.EventBus;
 import com.dmx.shared.kernel.Service;

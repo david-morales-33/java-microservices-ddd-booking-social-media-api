@@ -1,4 +1,4 @@
-package com.dmx.bus.event;
+package com.dmx.shared.kernel.events;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

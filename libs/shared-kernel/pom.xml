@@ -20,12 +20,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.15.2</version>
         </dependency>
-        <dependency>
-            <groupId>com.dmx.libs</groupId>
-            <artifactId>bus</artifactId>
-            <version>1.0.0</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
     <build>
         <plugins>

@@ -1,6 +1,6 @@
 package com.dmx.shared.kernel;
 
-import com.dmx.bus.event.DomainEvent;
+import com.dmx.shared.kernel.events.DomainEvent;
 
 import java.util.ArrayList;
 import java.util.Collections;
