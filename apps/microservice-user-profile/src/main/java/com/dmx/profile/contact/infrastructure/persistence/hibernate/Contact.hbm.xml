@@ -1,0 +1,17 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dmx.profile.contact.domain.Contact" table="tbl_contact">
+        <composite-id name="id" class="com.dmx.profile.contact.domain.ContactId" access="field">
+            <key-property column="ctc_id" name="value" length="36" access="field" />
+        </composite-id>
+
+        <component name="content" class="com.dmx.profile.contact.domain.ContactContent" access="field">
+            <property name="value" column="ctc_label" type="string" access="field"/>
+        </component>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dmx.profile.location.domain.Location" table="tbl_location">
+        <composite-id name="id" class="com.dmx.profile.location.domain.LocationId" access="field">
+            <key-property column="lct_id" name="value" length="36" access="field"/>
+        </composite-id>
+
+        <component name="country" class="com.dmx.profile.location.domain.LocationCountry" access="field">
+            <property name="value" column="lct_country" type="string" access="field" length="50"/>
+        </component>
+
+        <component name="city" class="com.dmx.profile.location.domain.LocationCity" access="field">
+            <property name="value" column="lct_city" type="string" access="field" length="50"/>
+        </component>
+
+        <component name="address" class="com.dmx.profile.location.domain.LocationAddress" access="field">
+            <property name="value" column="lct_address" type="string" access="field" length="100"/>
+        </component>
+    </class>
+</hibernate-mapping>

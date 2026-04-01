@@ -1,0 +1,64 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dmx.profile.user_profile.domain.UserProfile" table="tbl_user_profile">
+        <composite-id name="id" class="com.dmx.profile.user_profile.domain.UserProfileId" access="field">
+            <key-property column="usr_id" name="value" length="36" access="field"/>
+        </composite-id>
+
+        <component name="name" class="com.dmx.profile.user_profile.domain.UserProfileName" access="field">
+            <property name="value" column="usr_name" type="string" access="field" length="100"/>
+        </component>
+
+        <component name="nickname" class="com.dmx.profile.user_profile.domain.UserProfileNickname" access="field">
+            <property name="value" column="usr_nick_name" type="string" access="field" length="50"/>
+        </component>
+
+        <component name="email" class="com.dmx.profile.user_profile.domain.UserProfileEmail" access="field">
+            <property name="value" column="usr_email" type="string" access="field" length="100"/>
+        </component>
+
+        <component name="age" class="com.dmx.profile.user_profile.domain.UserProfileAge" access="field">
+            <property name="value" column="usr_age" type="integer" access="field"/>
+        </component>
+
+        <component name="gender" class="com.dmx.profile.user_profile.domain.UserProfileGender" access="field">
+            <property name="value" column="usr_gender" type="string" access="field" length="20"/>
+        </component>
+
+        <component name="description" class="com.dmx.profile.user_profile.domain.UserProfileDescription" access="field">
+            <property name="value" column="usr_description" type="text" access="field" length="500"/>
+        </component>
+
+        <bag name="skillList" cascade="all-delete-orphan">
+            <key column="usr_id"/>
+            <one-to-many class="com.dmx.profile.skill.domain.Skill"/>
+        </bag>
+
+        <bag name="contactList" cascade="all-delete-orphan">
+            <key column="usr_id"/>
+            <one-to-many class="com.dmx.profile.contact.domain.Contact"/>
+        </bag>
+
+        <bag name="locationList" cascade="all-delete-orphan">
+            <key column="usr_id"/>
+            <one-to-many class="com.dmx.profile.location.domain.Location"/>
+        </bag>
+
+        <map name="photoMap" cascade="all-delete-orphan">
+            <key column="usr_id"/>
+            <map-key column="pht_type" type="string"/>
+            <one-to-many class="com.dmx.profile.photo.domain.Photo"/>
+        </map>
+
+        <bag name="roleList" table="tbl_user_x_role">
+            <key column="usr_id"/>
+            <many-to-many class="com.dmx.profile.role.domain.Role" column="rol_id"/>
+        </bag>
+
+        <many-to-one name="status" class="com.dmx.profile.status.domain.Status" column="sts_id" not-null="true"/>
+    </class>
+</hibernate-mapping>

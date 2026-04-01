@@ -83,7 +83,7 @@ public final class HibernateConfigurationFactory {
     }
 
     private List<String> subdirectoriesFor() {
-        String path = "./microservice-social-graph/src/main/java/com/dmx/social_graph/";
+        String path = "./apps/microservice-social-graph/src/main/java/com/dmx/social_graph/";
 
         String[] files = new File(path).list((current, name) -> new File(current, name).isDirectory());
         if (null == files) {

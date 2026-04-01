@@ -1,0 +1,16 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dmx.profile.role.domain.Role" table="tbl_role">
+        <composite-id name="id" class="com.dmx.profile.role.domain.RoleId" access="field">
+            <key-property column="rol_id" name="value" length="36" access="field" />
+        </composite-id>
+
+        <component name="name" class="com.dmx.profile.role.domain.RoleName" access="field">
+            <property name="value" column="rol_name" type="string" access="field" />
+        </component>
+    </class>
+</hibernate-mapping>

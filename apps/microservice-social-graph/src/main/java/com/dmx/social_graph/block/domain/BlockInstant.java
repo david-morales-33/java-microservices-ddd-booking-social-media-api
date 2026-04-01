@@ -1,6 +1,6 @@
 package com.dmx.social_graph.block.domain;
 
-import com.dmx.social_graph.shared.domain.Utils;
+import com.dmx.shared.kernel.Utils;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
