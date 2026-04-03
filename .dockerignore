@@ -1,0 +1,6 @@
+# Root-level ignore for Docker builds
+.git
+.idea
+**/target
+**/.idea
+**/.DS_Store

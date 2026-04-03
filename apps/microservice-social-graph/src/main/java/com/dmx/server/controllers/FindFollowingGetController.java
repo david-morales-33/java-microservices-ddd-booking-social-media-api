@@ -24,7 +24,7 @@ public class FindFollowingGetController extends ApiController {
     }
 
     @GetMapping(value = "/following/{userId}")
-    public ResponseEntity<FollowingByUserResponse> index(@PathVariable String userId) {
+    public ResponseEntity<FollowingByUserResponse> index(@PathVariable("userId") String userId) {
         FindFollowingByUserQuery query = new FindFollowingByUserQuery(userId);
         FollowingByUserResponse response = ask(query);
         return ResponseEntity.ok().body(response);

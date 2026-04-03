@@ -1,6 +1,8 @@
 ## Environment files
 /apps/microservice-social-graph/src/main/resources/.env
 /apps/microservice-user-profile/src/main/resources/.env
+/apps/microservice-social-graph/src/main/resources/.env.docker
+/apps/microservice-user-profile/src/main/resources/.env.docker
 
 ## Test files
 /apps/microservice-social-graph/src/main/java/com/dmx/server/Test

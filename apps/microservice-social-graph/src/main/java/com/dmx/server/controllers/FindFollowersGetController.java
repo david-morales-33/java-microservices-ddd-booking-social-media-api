@@ -22,7 +22,7 @@ public class FindFollowersGetController extends ApiController {
     }
 
     @GetMapping(value = "/followers/{userId}")
-    public ResponseEntity<FollowerByUserResponse> index(@PathVariable String userId) {
+    public ResponseEntity<FollowerByUserResponse> index(@PathVariable("userId") String userId) {
 
         FindFollowerByUserQuery query = new FindFollowerByUserQuery(userId);
         FollowerByUserResponse followers = ask(query);

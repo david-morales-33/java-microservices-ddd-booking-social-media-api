@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/libs/bus/pom.xml" />
         <option value="$PROJECT_DIR$/libs/persistence/pom.xml" />
         <option value="$PROJECT_DIR$/apps/microservice-user-profile/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

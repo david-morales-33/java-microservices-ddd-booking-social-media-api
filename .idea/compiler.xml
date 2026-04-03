@@ -7,22 +7,25 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-user-profile" />
+        <module name="persistence" />
         <module name="shared-kernel" />
         <module name="bus" />
-        <module name="persistence" />
         <module name="microservice-social-graph" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="event-bus" target="1.8" />
+      <module name="java-microservices-ddd-booking-social-media-api-rest" target="17" />
       <module name="shared-bus" target="1.8" />
       <module name="shared-kernel (1)" target="1.8" />
+      <module name="spring-microservices-booking-social-media" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="microservice-social-graph" options="-parameters" />
-      <module name="microservice-user-profile" options="-parameters" />
+      <module name="microservice-social-graph" options="" />
+      <module name="microservice-user-profile" options="" />
+      <module name="persistence" options="" />
     </option>
   </component>
 </project>

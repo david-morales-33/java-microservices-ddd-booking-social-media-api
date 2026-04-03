@@ -1,0 +1,64 @@
+services:
+  social-graph-db:
+    image: postgres:16
+    container_name: social-graph-db
+    environment:
+      POSTGRES_DB: management_booking_social_media_social_graph
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: Sistemas-2020
+    ports:
+      - "5433:5432"
+    volumes:
+      - social_graph_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d management_booking_social_media_social_graph"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  user-profile-db:
+    image: postgres:16
+    container_name: user-profile-db
+    environment:
+      POSTGRES_DB: management_booking_social_media_user_profile
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: Sistemas-2020
+    ports:
+      - "5434:5432"
+    volumes:
+      - user_profile_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d management_booking_social_media_user_profile"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  microservice-social-graph:
+    build:
+      context: .
+      dockerfile: apps/microservice-social-graph/Dockerfile
+    container_name: microservice-social-graph
+    depends_on:
+      social-graph-db:
+        condition: service_healthy
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./apps/microservice-social-graph/src/main/resources/.env.docker:/.env:ro
+
+  microservice-user-profile:
+    build:
+      context: .
+      dockerfile: apps/microservice-user-profile/Dockerfile
+    container_name: microservice-user-profile
+    depends_on:
+      user-profile-db:
+        condition: service_healthy
+    ports:
+      - "8091:8090"
+    volumes:
+      - ./apps/microservice-user-profile/src/main/resources/.env.docker:/.env:ro
+
+volumes:
+  social_graph_db_data:
+  user_profile_db_data:
