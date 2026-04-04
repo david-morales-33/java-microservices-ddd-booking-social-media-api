@@ -15,6 +15,8 @@ COPY libs/bus/src libs/bus/src
 COPY apps/microservice-social-graph/pom.xml apps/microservice-social-graph/pom.xml
 COPY apps/microservice-social-graph/src apps/microservice-social-graph/src
 
+COPY apps/microservice-user-profile/pom.xml apps/microservice-user-profile/pom.xml
+
 RUN mvn -f pom.xml -pl apps/microservice-social-graph -am clean package -DskipTests
 
 FROM eclipse-temurin:17-jre
