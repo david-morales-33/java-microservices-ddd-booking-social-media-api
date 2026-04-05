@@ -1,0 +1,36 @@
+{
+  "cdc-social-graph-connector": {
+    "name": "cdc-social-graph-connector",
+    "config": {
+      "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+      "database.hostname": "social-graph-db",
+      "database.port": "5432",
+      "database.user": "postgres",
+      "database.password": "Sistemas-2020",
+      "database.dbname": "management_booking_social_media_social_graph",
+      "topic.prefix": "cdc.social_graph",
+      "table.include.list": "public.tbl_event",
+      "plugin.name": "pgoutput",
+      "slot.name": "debezium_slot",
+      "publication.name": "dbz_publication",
+      "snapshot.mode": "initial"
+    }
+  },
+  "cdc-user-profile-connector": {
+    "name": "cdc-user-profile-connector",
+    "config": {
+      "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+      "database.hostname": "user-profile-db",
+      "database.port": "5432",
+      "database.user": "postgres",
+      "database.password": "Sistemas-2020",
+      "database.dbname": "management_booking_social_media_user_profile",
+      "topic.prefix": "cdc.user_profile",
+      "table.include.list": "public.tbl_event",
+      "plugin.name": "pgoutput",
+      "slot.name": "debezium_slot",
+      "publication.name": "dbz_publication",
+      "snapshot.mode": "initial"
+    }
+  }
+}
