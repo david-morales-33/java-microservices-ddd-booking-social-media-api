@@ -2,6 +2,7 @@ package com.dmx.persistence.hibernate;
 
 import com.dmx.shared.kernel.events.OutboxEvent;
 import com.dmx.shared.kernel.events.OutboxEventRepository;
+import jakarta.persistence.LockModeType;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -29,7 +30,7 @@ public abstract class HibernateOutboxEventRepository implements OutboxEventRepos
         CriteriaQuery<OutboxEvent> query = builder.createQuery(OutboxEvent.class);
         Root<OutboxEvent> root = query.from(OutboxEvent.class);
         Predicate predicate = builder.equal(root.get("published"), false);
-        query.orderBy(builder.desc(root.get("occurredOn")));
+        query.orderBy(builder.asc(root.get("occurredOn")));
         query.select(root).where(predicate);
 
         return sessionFactory
@@ -37,6 +38,7 @@ public abstract class HibernateOutboxEventRepository implements OutboxEventRepos
                 .createQuery(query)
                 .setMaxResults(ELEMENTS)
                 .setFirstResult(0)
+                .setLockMode(LockModeType.PESSIMISTIC_WRITE)
                 .getResultList();
     }
 }
