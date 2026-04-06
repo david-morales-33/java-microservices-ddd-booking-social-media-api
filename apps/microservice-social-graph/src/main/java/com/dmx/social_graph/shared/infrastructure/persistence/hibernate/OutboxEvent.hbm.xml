@@ -11,7 +11,7 @@
         <property name="aggregateId" column="evt_aggregate_id" type="string"/>
         <property name="eventName" column="evt_name" type="string"/>
         <property name="body" column="evt_body" type="text"/>
-        <property name="occurredOn" column="evt_occurred_on" type="string"/>
+        <property name="occurredOn" column="evt_occurred_on" type="timestamp"/>
         <property name="published" column="evt_published" type="boolean"/>
     </class>
 </hibernate-mapping>

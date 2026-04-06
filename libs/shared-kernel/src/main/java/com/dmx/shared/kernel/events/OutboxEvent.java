@@ -1,14 +1,16 @@
 package com.dmx.shared.kernel.events;
 
+import java.sql.Timestamp;
+
 public class OutboxEvent {
     private String id;
     private String aggregateId;
     private String eventName;
     private String body;
-    private String occurredOn;
+    private Timestamp occurredOn;
     private boolean published;
 
-    public OutboxEvent(String id, String aggregateId, String eventName, String body, String occurredOn, boolean published) {
+    public OutboxEvent(String id, String aggregateId, String eventName, String body, Timestamp occurredOn, boolean published) {
         this.id = id;
         this.aggregateId = aggregateId;
         this.eventName = eventName;
@@ -36,7 +38,7 @@ public class OutboxEvent {
         return body;
     }
 
-    public String getOccurredOn() {
+    public Timestamp getOccurredOn() {
         return occurredOn;
     }
 
@@ -60,7 +62,7 @@ public class OutboxEvent {
         this.body = body;
     }
 
-    public void setOccurredOn(String occurredOn) {
+    public void setOccurredOn(Timestamp occurredOn) {
         this.occurredOn = occurredOn;
     }
 

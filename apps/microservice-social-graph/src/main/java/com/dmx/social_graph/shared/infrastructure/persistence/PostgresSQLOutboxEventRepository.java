@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Primary
 @Service
 @Transactional("social_graph-transaction_manager")
-public class PostgresSQLOutboxEventRepository extends HibernateOutboxEventRepository{
+public class PostgresSQLOutboxEventRepository extends HibernateOutboxEventRepository {
     public PostgresSQLOutboxEventRepository(@Qualifier("social_graph-session_factory") SessionFactory sessionFactory) {
         super(sessionFactory);
     }
