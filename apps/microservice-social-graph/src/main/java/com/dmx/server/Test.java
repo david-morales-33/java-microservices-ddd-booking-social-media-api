@@ -1,6 +1,8 @@
 package com.dmx.server;
 
 
+import com.dmx.shared.kernel.events.OutboxEvent;
+import com.dmx.social_graph.shared.infrastructure.config.ParameterNotExist;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -9,12 +11,17 @@ import com.dmx.social_graph.shared.infrastructure.hibernate.HibernateConfigurati
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.util.List;
 
 public class Test {
-    public static void main(String[] args)  throws IOException {
+    public static void main(String[] args) throws IOException, ParameterNotExist {
 
         ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
         HibernateConfigurationFactory factory = new HibernateConfigurationFactory(resourceResolver);
@@ -33,7 +40,26 @@ public class Test {
         SessionFactory sessionFactory = sessionFactoryBean.getObject();
 
         Session session = sessionFactory.openSession();
+
         Transaction transaction = session.beginTransaction();
+        CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
+
+        CriteriaQuery<OutboxEvent> query = builder.createQuery(OutboxEvent.class);
+        Root<OutboxEvent> root = query.from(OutboxEvent.class);
+
+        Predicate predicate = builder.equal(root.get("published"), false);
+
+        query.select(root)
+                .where(predicate)
+                .orderBy(builder.desc(root.get("occurredOn")));
+
+        List<OutboxEvent> results = session
+                .createQuery(query)
+                .setMaxResults(10)
+                .setFirstResult(0)
+                .getResultList();
+
+        System.out.println(results.get(0));
 
         transaction.commit();
     }

@@ -2,20 +2,19 @@ package com.dmx.social_graph.shared.infrastructure.bus.event.outbox;
 
 import com.dmx.shared.kernel.events.DomainEvent;
 import com.dmx.bus.event.EventBus;
-import com.dmx.bus.event.OutboxRepository;
+import com.dmx.shared.kernel.events.OutboxEventRepository;
 
 import java.util.List;
 
 public final class OutboxEventBus implements EventBus {
 
-    private final OutboxRepository repository;
+    private final OutboxEventRepository repository;
 
-    public OutboxEventBus(OutboxRepository repository) {
+    public OutboxEventBus(OutboxEventRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public void publish(List<DomainEvent> events) {
-        events.forEach(repository::save);
     }
 }
