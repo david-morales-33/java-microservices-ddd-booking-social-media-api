@@ -42,24 +42,7 @@ public class Test {
         Session session = sessionFactory.openSession();
 
         Transaction transaction = session.beginTransaction();
-        CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
 
-        CriteriaQuery<OutboxEvent> query = builder.createQuery(OutboxEvent.class);
-        Root<OutboxEvent> root = query.from(OutboxEvent.class);
-
-        Predicate predicate = builder.equal(root.get("published"), false);
-
-        query.select(root)
-                .where(predicate)
-                .orderBy(builder.desc(root.get("occurredOn")));
-
-        List<OutboxEvent> results = session
-                .createQuery(query)
-                .setMaxResults(10)
-                .setFirstResult(0)
-                .getResultList();
-
-        System.out.println(results.get(0));
 
         transaction.commit();
     }

@@ -29,9 +29,8 @@ public abstract class HibernateOutboxEventRepository implements OutboxEventRepos
         CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
         CriteriaQuery<OutboxEvent> query = builder.createQuery(OutboxEvent.class);
         Root<OutboxEvent> root = query.from(OutboxEvent.class);
-        Predicate predicate = builder.equal(root.get("published"), false);
         query.orderBy(builder.asc(root.get("occurredOn")));
-        query.select(root).where(predicate);
+        query.select(root);
 
         return sessionFactory
                 .getCurrentSession()

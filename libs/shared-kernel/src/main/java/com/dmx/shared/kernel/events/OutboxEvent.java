@@ -20,7 +20,7 @@ public class OutboxEvent {
         this.occurredOn = occurredOn;
     }
 
-    public static OutboxEvent fromDomainEvent(DomainEvent event) {
+    public static OutboxEvent fromDomainEvent(DomainEvent event){
         return new OutboxEvent(
                 event.eventId(),
                 event.aggregateId(),

@@ -1,6 +1,7 @@
 package com.dmx.shared.kernel.events;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.UUID;
@@ -13,7 +14,7 @@ public abstract class DomainEvent {
     public DomainEvent(String aggregateId) {
         this.aggregateId = aggregateId;
         this.eventId     = UUID.randomUUID().toString();
-        this.occurredOn  = LocalDateTime.now().toString();
+        this.occurredOn  = Instant.now().toString();
     }
 
     public DomainEvent(String aggregateId, String eventId, String occurredOn) {
