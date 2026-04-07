@@ -13,6 +13,7 @@
         <module>libs/shared-kernel</module>
         <module>libs/persistence</module>
         <module>libs/bus</module>
+        <module>apps/microservice-app-notification</module>
         <module>apps/microservice-social-graph</module>
         <module>apps/microservice-user-profile</module>
     </modules>

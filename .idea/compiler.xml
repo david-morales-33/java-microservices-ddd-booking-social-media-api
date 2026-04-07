@@ -10,6 +10,7 @@
         <module name="persistence" />
         <module name="shared-kernel" />
         <module name="bus" />
+        <module name="microservice-app-notification" />
         <module name="microservice-social-graph" />
       </profile>
     </annotationProcessing>

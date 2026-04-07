@@ -15,19 +15,19 @@ COPY libs/bus/pom.xml libs/bus/pom.xml
 COPY libs/bus/src libs/bus/src
 
 #PROYECTO PRINCIPAL Y SU REPECTIVO GESTOR
-COPY apps/microservice-user-profile/pom.xml apps/microservice-user-profile/pom.xml
-COPY apps/microservice-user-profile/src apps/microservice-user-profile/src
+COPY apps/microservice-app-notification/pom.xml apps/microservice-app-notification/pom.xml
+COPY apps/microservice-app-notification/src apps/microservice-app-notification/src
 
 #GESTORES HIJOS (EL GESTOR PADRE LOS REQUIRE)
-COPY apps/microservice-app-notification/pom.xml apps/microservice-app-notification/pom.xml
+COPY apps/microservice-user-profile/pom.xml apps/microservice-user-profile/pom.xml
 COPY apps/microservice-social-graph/pom.xml apps/microservice-social-graph/pom.xml
 
-RUN mvn -f pom.xml -pl apps/microservice-user-profile -am clean package -DskipTests
+RUN mvn -f pom.xml -pl apps/microservice-app-notification -am clean package -DskipTests
 
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-COPY --from=build /workspace/apps/microservice-user-profile/target/microservice-user-profile-1.0.0.jar app.jar
+COPY --from=build /workspace/apps/microservice-app-notification/target/microservice-app-notification-1.0.0.jar app.jar
 
 EXPOSE 8090
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

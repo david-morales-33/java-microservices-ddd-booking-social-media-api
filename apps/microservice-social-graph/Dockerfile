@@ -1,8 +1,10 @@
 FROM maven:3.9.9-eclipse-temurin-17 AS build
 WORKDIR /workspace
 
+#GESTOR PADRE
 COPY pom.xml pom.xml
 
+#DEPENDENCIAS DEL PROYECTO Y SUS RESPECTIVOS GESTORES
 COPY libs/shared-kernel/pom.xml libs/shared-kernel/pom.xml
 COPY libs/shared-kernel/src libs/shared-kernel/src
 
@@ -12,9 +14,12 @@ COPY libs/persistence/src libs/persistence/src
 COPY libs/bus/pom.xml libs/bus/pom.xml
 COPY libs/bus/src libs/bus/src
 
+#PROYECTO PRINCIPAL Y SU REPECTIVO GESTOR
 COPY apps/microservice-social-graph/pom.xml apps/microservice-social-graph/pom.xml
 COPY apps/microservice-social-graph/src apps/microservice-social-graph/src
 
+#GESTORES HIJOS (EL GESTOR PADRE LOS REQUIRE)
+COPY apps/microservice-app-notification/pom.xml apps/microservice-app-notification/pom.xml
 COPY apps/microservice-user-profile/pom.xml apps/microservice-user-profile/pom.xml
 
 RUN mvn -f pom.xml -pl apps/microservice-social-graph -am clean package -DskipTests
