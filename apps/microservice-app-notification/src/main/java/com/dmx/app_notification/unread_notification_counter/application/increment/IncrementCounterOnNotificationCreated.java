@@ -1,12 +1,12 @@
 package com.dmx.app_notification.unread_notification_counter.application.increment;
 
 import com.dmx.app_notification.notification.domain.UserId;
-import com.dmx.app_notification.shared.domain.events.CreateNotificationEvent;
+import com.dmx.app_notification.shared.domain.events.NotificationCreatedDomainEvent;
 import com.dmx.bus.event.DomainEventSubscriber;
 import com.dmx.shared.kernel.Service;
 
 @Service
-public final class IncrementCounterOnNotificationCreated implements DomainEventSubscriber<CreateNotificationEvent> {
+public final class IncrementCounterOnNotificationCreated implements DomainEventSubscriber<NotificationCreatedDomainEvent> {
 
     private final UnreadNotificationCounterIncrementer incrementer;
 
@@ -15,12 +15,12 @@ public final class IncrementCounterOnNotificationCreated implements DomainEventS
     }
 
     @Override
-    public Class<CreateNotificationEvent> subscribedTo() {
-        return CreateNotificationEvent.class;
+    public Class<NotificationCreatedDomainEvent> subscribedTo() {
+        return NotificationCreatedDomainEvent.class;
     }
 
     @Override
-    public void on(CreateNotificationEvent event) {
+    public void on(NotificationCreatedDomainEvent event) {
         UserId recipientId = UserId.of(event.toPrimitives().get("recipientId").toString());
         incrementer.increment(recipientId);
     }

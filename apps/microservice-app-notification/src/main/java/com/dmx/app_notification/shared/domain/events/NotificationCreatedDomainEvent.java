@@ -6,23 +6,23 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class CreateNotificationEvent extends DomainEvent {
+public class NotificationCreatedDomainEvent extends DomainEvent {
     private final String recipientUserId;
     private final String sourceUserId;
 
-    public CreateNotificationEvent(String aggregateId, String recipientUserId, String sourceUserId) {
+    public NotificationCreatedDomainEvent(String aggregateId, String recipientUserId, String sourceUserId) {
         super(aggregateId);
         this.recipientUserId = recipientUserId;
         this.sourceUserId = sourceUserId;
     }
 
-    public CreateNotificationEvent(String aggregateId, String eventId, String occurredOn, String recipientUserId, String sourceUserId) {
+    public NotificationCreatedDomainEvent(String aggregateId, String eventId, String occurredOn, String recipientUserId, String sourceUserId) {
         super(aggregateId, eventId, occurredOn);
         this.recipientUserId = recipientUserId;
         this.sourceUserId = sourceUserId;
     }
 
-    public CreateNotificationEvent(String recipientUserId, String sourceUserId) {
+    public NotificationCreatedDomainEvent(String recipientUserId, String sourceUserId) {
         this.recipientUserId = recipientUserId;
         this.sourceUserId = sourceUserId;
     }
@@ -41,8 +41,8 @@ public class CreateNotificationEvent extends DomainEvent {
     }
 
     @Override
-    public CreateNotificationEvent fromPrimitives(String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn) {
-        return new CreateNotificationEvent(
+    public NotificationCreatedDomainEvent fromPrimitives(String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn) {
+        return new NotificationCreatedDomainEvent(
                 aggregateId,
                 eventId,
                 occurredOn,
@@ -54,7 +54,7 @@ public class CreateNotificationEvent extends DomainEvent {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        CreateNotificationEvent that = (CreateNotificationEvent) o;
+        NotificationCreatedDomainEvent that = (NotificationCreatedDomainEvent) o;
         return recipientUserId.equals(that.recipientUserId) &&
                 sourceUserId.equals(that.sourceUserId);
     }

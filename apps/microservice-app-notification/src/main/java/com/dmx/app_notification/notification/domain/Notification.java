@@ -1,7 +1,8 @@
 package com.dmx.app_notification.notification.domain;
 
+import com.dmx.app_notification.shared.domain.events.NotificationCreatedDomainEvent;
+import com.dmx.app_notification.shared.domain.events.NotificationReadDomainEvent;
 import com.dmx.shared.kernel.AggregateRoot;
-import com.dmx.shared.kernel.ValueObjectException;
 
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ public final class Notification extends AggregateRoot {
     public Notification(NotificationId id, UserId recipientUserId, UserId sourceUserId,
                         NotificationType type, NotificationStatus status, ReferenceId referenceId,
                         NotificationInstant createdAt, NotificationInstant readAt) {
-        if(recipientUserId.equals(sourceUserId)){
+        if (recipientUserId.equals(sourceUserId)) {
             throw new NotifyThemselvesException();
         }
         this.id = id;
@@ -43,9 +44,10 @@ public final class Notification extends AggregateRoot {
     }
 
     public static Notification create(UserId recipientUserId, UserId sourceUserId,
-                                     NotificationType type, ReferenceId referenceId) {
+                                      NotificationType type, ReferenceId referenceId) {
         NotificationId notificationId = new NotificationId(NotificationId.generate());
-        return new Notification(
+
+        Notification notification = new Notification(
                 notificationId,
                 recipientUserId,
                 sourceUserId,
@@ -55,6 +57,16 @@ public final class Notification extends AggregateRoot {
                 NotificationInstant.now(),
                 null
         );
+        notification.record(
+                new NotificationCreatedDomainEvent(
+                        notificationId.value(),
+                        recipientUserId.value(),
+                        sourceUserId.value(),
+                        type.name(),
+                        referenceId.value()
+                )
+        );
+        return notification;
     }
 
     public NotificationId getId() {
@@ -90,10 +102,19 @@ public final class Notification extends AggregateRoot {
     }
 
     public void read() {
-        if(status!= NotificationStatus.READ){
+        if (status != NotificationStatus.READ) {
             this.status = NotificationStatus.READ;
             this.readAt = NotificationInstant.now();
 
+            this.record(
+                    new NotificationReadDomainEvent(
+                            this.id.value(),
+                            this.recipientUserId.value(),
+                            this.sourceUserId.value(),
+                            this.type.name(),
+                            this.referenceId.value()
+                    )
+            );
         }
     }
 

@@ -1,46 +1,65 @@
 package com.dmx.app_notification.shared.domain.events;
 
-import com.dmx.shared.kernel.DomainEvent;
+import com.dmx.shared.kernel.events.DomainEvent;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class NotificationReadDomainEvent extends DomainEvent {
-    private final String notificationId;
-    private final String userId;
-    private final LocalDateTime occurredOn;
+    private final String recipientUserId;
+    private final String sourceUserId;
 
-    public NotificationReadDomainEvent(String notificationId, String userId) {
-        this.notificationId = notificationId;
-        this.userId = userId;
-        this.occurredOn = LocalDateTime.now();
+    public NotificationReadDomainEvent(String aggregateId, String recipientUserId, String sourceUserId) {
+        super(aggregateId);
+        this.recipientUserId = recipientUserId;
+        this.sourceUserId = sourceUserId;
     }
 
-    public String getNotificationId() {
-        return notificationId;
+    public NotificationReadDomainEvent(String aggregateId, String eventId, String occurredOn, String recipientUserId, String sourceUserId) {
+        super(aggregateId, eventId, occurredOn);
+        this.recipientUserId = recipientUserId;
+        this.sourceUserId = sourceUserId;
     }
 
-    public String getUserId() {
-        return userId;
+    public NotificationReadDomainEvent(String recipientUserId, String sourceUserId) {
+        this.recipientUserId = recipientUserId;
+        this.sourceUserId = sourceUserId;
     }
 
     @Override
-    public LocalDateTime occurredOn() {
-        return occurredOn;
+    public String eventName() {
+        return "app.notification.read";
+    }
+
+    @Override
+    public HashMap<String, Serializable> toPrimitives() {
+        return new HashMap<String, Serializable>() {{
+            put("recipientUser", recipientUserId);
+            put("sourceUser", sourceUserId);
+        }};
+    }
+
+    @Override
+    public NotificationCreatedDomainEvent fromPrimitives(String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn) {
+        return new NotificationCreatedDomainEvent(
+                aggregateId,
+                eventId,
+                occurredOn,
+                (String) body.get("recipientUser"),
+                (String) body.get("sourceUser")
+        );
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NotificationReadDomainEvent that = (NotificationReadDomainEvent) o;
-        return Objects.equals(notificationId, that.notificationId) &&
-                Objects.equals(userId, that.userId);
+        return recipientUserId.equals(that.recipientUserId) && sourceUserId.equals(that.sourceUserId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(notificationId, userId);
+        return Objects.hash(recipientUserId, sourceUserId);
     }
 }
