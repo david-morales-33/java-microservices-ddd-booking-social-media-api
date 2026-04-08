@@ -89,7 +89,7 @@ public final class Notification extends AggregateRoot {
         return readAt;
     }
 
-    public void markAsRead() {
+    public void read() {
         if(status!= NotificationStatus.READ){
             this.status = NotificationStatus.READ;
             this.readAt = NotificationInstant.now();

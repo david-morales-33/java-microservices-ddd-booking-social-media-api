@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface NotificationRepository {
-    Notification save(Notification notification);
+    void save(Notification notification);
     Optional<Notification> find(NotificationId notificationId);
-    List<Notification> search(RecipientUserId userId);
+    List<Notification> search(UserId id);
 }

@@ -3,6 +3,7 @@ package com.dmx.app_notification.notification.application.create_notification;
 import com.dmx.app_notification.notification.domain.*;
 import com.dmx.bus.event.EventBus;
 import com.dmx.shared.kernel.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class NotificationCreator {
@@ -14,6 +15,7 @@ public class NotificationCreator {
         this.bus = bus;
     }
 
+    @Transactional("app_notification-transaction_manager")
     public void create(UserId recipientUserId, UserId sourceUserId, NotificationType type, ReferenceId referenceId) {
         Notification notification = Notification.create(recipientUserId, sourceUserId, type, referenceId);
 

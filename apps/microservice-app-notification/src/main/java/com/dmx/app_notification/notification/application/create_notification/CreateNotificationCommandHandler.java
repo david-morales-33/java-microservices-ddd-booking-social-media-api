@@ -20,7 +20,7 @@ public final class CreateNotificationCommandHandler implements CommandHandler<Cr
         UserId sourceUserId = UserId.of(command.getSourceUserId());
         NotificationType type = NotificationType.valueOf(command.getType());
         ReferenceId referenceId = ReferenceId.of(command.getReferenceId());
-        
+
         creator.create(recipientUserId, sourceUserId, type, referenceId);
     }
 }
