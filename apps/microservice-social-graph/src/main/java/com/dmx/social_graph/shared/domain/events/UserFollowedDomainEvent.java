@@ -38,7 +38,7 @@ public class UserFollowedDomainEvent extends DomainEvent {
 
     @Override
     public String eventName() {
-        return "social_graph.follow";
+        return "social.graph.follow";
     }
 
     @Override
