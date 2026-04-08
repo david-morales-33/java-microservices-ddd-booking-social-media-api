@@ -52,7 +52,7 @@ public final class Notification extends AggregateRoot {
                 recipientUserId,
                 sourceUserId,
                 type,
-                NotificationStatus.UNREAD,
+                NotificationStatus.unread(),
                 referenceId,
                 NotificationInstant.now(),
                 null
@@ -62,7 +62,7 @@ public final class Notification extends AggregateRoot {
                         notificationId.value(),
                         recipientUserId.value(),
                         sourceUserId.value(),
-                        type.name(),
+                        type.value(),
                         referenceId.value()
                 )
         );
@@ -102,24 +102,19 @@ public final class Notification extends AggregateRoot {
     }
 
     public void read() {
-        if (status != NotificationStatus.READ) {
-            this.status = NotificationStatus.READ;
+        if (this.status.isUnread()) {
+            this.status = NotificationStatus.read();
             this.readAt = NotificationInstant.now();
-
             this.record(
                     new NotificationReadDomainEvent(
                             this.id.value(),
                             this.recipientUserId.value(),
                             this.sourceUserId.value(),
-                            this.type.name(),
+                            this.type.value(),
                             this.referenceId.value()
                     )
             );
         }
-    }
-
-    public void mute() {
-        this.status = NotificationStatus.MUTED;
     }
 
     public NotificationDTO toPrimitives() {
@@ -127,8 +122,8 @@ public final class Notification extends AggregateRoot {
                 this.id.value(),
                 this.recipientUserId.value(),
                 this.sourceUserId.value(),
-                this.type.name(),
-                this.status.name(),
+                this.type.value(),
+                this.status.value(),
                 this.referenceId.value(),
                 this.createdAt.value().toString(),
                 this.readAt != null ? this.readAt.value().toString() : null
@@ -140,8 +135,8 @@ public final class Notification extends AggregateRoot {
                 new NotificationId(dto.id()),
                 new UserId(dto.recipientUserId()),
                 new UserId(dto.sourceUserId()),
-                NotificationType.valueOf(dto.type()),
-                NotificationStatus.valueOf(dto.status()),
+                new NotificationType(dto.type()),
+                new NotificationStatus(dto.status()),
                 new ReferenceId(dto.referenceId()),
                 new NotificationInstant(java.sql.Timestamp.valueOf(dto.createdAt())),
                 dto.readAt() != null ? new NotificationInstant(java.sql.Timestamp.valueOf(dto.readAt())) : null

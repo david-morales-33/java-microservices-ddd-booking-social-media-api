@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dmx.app_notification.notification.domain.Notification" table="tbl_notification">
+        <composite-id name="id" class="com.dmx.app_notification.notification.domain.NotificationId" access="field">
+            <key-property column="nft_id" name="value" length="36" access="field"/>
+        </composite-id>
+        <component name="recipientUserId" class="com.dmx.app_notification.notification.domain.UserId" access="field">
+            <property name="value" column="nft_recipient_id" type="string" access="field" length="36" not-null="true"/>
+        </component>
+        <component name="sourceUserId" class="com.dmx.app_notification.notification.domain.UserId" access="field">
+            <property name="value" column="nft_source_id" type="string" access="field" length="36" not-null="true"/>
+        </component>
+        <component name="referenceId" class="com.dmx.app_notification.notification.domain.ReferenceId" access="field">
+            <property name="value" column="nft_reference_id" type="string" length="50" access="field"/>
+        </component>
+        <component name="type" class="com.dmx.app_notification.notification.domain.NotificationType" access="field">
+            <property name="value" column="nft_type" type="string" length="30" access="field" not-null="true"/>
+        </component>
+        <component name="status" class="com.dmx.app_notification.notification.domain.NotificationStatus" access="field">
+            <property name="value" column="nft_status" type="string" length="20" access="field" not-null="true"/>
+        </component>
+        <component name="createAt" class="com.dmx.app_notification.notification.domain.NotificationInstant" access="field">
+            <property name="value" column="nft_create_at" type="timestamp" access="field" not-null="true"/>
+        </component>
+        <component name="readAt" class="com.dmx.app_notification.notification.domain.NotificationInstant" access="field">
+            <property name="value" column="nft_read_at" type="timestamp" access="field"/>
+        </component>
+    </class>
+</hibernate-mapping>

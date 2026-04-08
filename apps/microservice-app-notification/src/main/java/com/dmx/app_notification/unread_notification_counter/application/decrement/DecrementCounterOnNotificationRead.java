@@ -6,7 +6,7 @@ import com.dmx.bus.event.DomainEventSubscriber;
 import com.dmx.shared.kernel.Service;
 
 @Service
-public class DecrementCounterOnNotificationRead implements DomainEventSubscriber<NotificationReadDomainEvent> {
+public final class DecrementCounterOnNotificationRead implements DomainEventSubscriber<NotificationReadDomainEvent> {
     private final UnreadNotificationCounterDecrementer decrementer;
 
     public DecrementCounterOnNotificationRead(UnreadNotificationCounterDecrementer decrementer) {
