@@ -1,6 +1,7 @@
 package com.dmx.app_notification.notification.domain;
 
 import com.dmx.shared.kernel.AggregateRoot;
+import com.dmx.shared.kernel.ValueObjectException;
 
 import java.util.Objects;
 
@@ -17,6 +18,9 @@ public final class Notification extends AggregateRoot {
     public Notification(NotificationId id, UserId recipientUserId, UserId sourceUserId,
                         NotificationType type, NotificationStatus status, ReferenceId referenceId,
                         NotificationInstant createdAt, NotificationInstant readAt) {
+        if(recipientUserId.equals(sourceUserId)){
+            throw new NotifyThemselvesException();
+        }
         this.id = id;
         this.recipientUserId = recipientUserId;
         this.sourceUserId = sourceUserId;
@@ -86,8 +90,11 @@ public final class Notification extends AggregateRoot {
     }
 
     public void markAsRead() {
-        this.status = NotificationStatus.READ;
-        this.readAt = NotificationInstant.now();
+        if(status!= NotificationStatus.READ){
+            this.status = NotificationStatus.READ;
+            this.readAt = NotificationInstant.now();
+
+        }
     }
 
     public void mute() {
