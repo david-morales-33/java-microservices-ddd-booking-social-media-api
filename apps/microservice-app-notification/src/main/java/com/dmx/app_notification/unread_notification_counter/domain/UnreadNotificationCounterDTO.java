@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public record UnreadNotificationCounterDTO(
         String userId,
-        Integer unreadCount
+        Integer count
 ) implements Serializable {
 }
 

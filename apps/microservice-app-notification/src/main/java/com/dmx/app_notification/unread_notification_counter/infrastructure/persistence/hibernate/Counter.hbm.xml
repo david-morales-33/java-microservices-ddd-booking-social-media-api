@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dmx.app_notification.unread_notification_counter.domain.UnreadNotificationCounter" table="tbl_unread_notification_counter">
+        <composite-id name="userId" class="com.dmx.app_notification.unread_notification_counter.domain.UnreadNotificationCounterId" access="field">
+            <key-property column="ctr_id" name="value" length="36" access="field"/>
+        </composite-id>
+        <component name="count" class="com.dmx.app_notification.unread_notification_counter.domain.UnreadNotificationCount" access="field">
+            <property name="value" column="ctr_count" type="integer" access="field" not-null="true"/>
+        </component>
+    </class>
+</hibernate-mapping>

@@ -17,6 +17,6 @@ public class NotificationHibernateConfigurationFactory extends HibernateConfigur
 
     @Override
     protected String hbm2ddl() {
-        return "update";
+        return "create";
     }
 }

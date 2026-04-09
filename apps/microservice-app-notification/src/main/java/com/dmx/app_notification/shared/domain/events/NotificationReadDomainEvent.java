@@ -27,6 +27,12 @@ public class NotificationReadDomainEvent extends DomainEvent {
         this.sourceUserId = sourceUserId;
     }
 
+    public NotificationReadDomainEvent() {
+        super();
+        this.recipientUserId = null;
+        this.sourceUserId = null;
+    }
+
     @Override
     public String eventName() {
         return "app.notification.read";
@@ -41,8 +47,8 @@ public class NotificationReadDomainEvent extends DomainEvent {
     }
 
     @Override
-    public NotificationCreatedDomainEvent fromPrimitives(String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn) {
-        return new NotificationCreatedDomainEvent(
+    public NotificationReadDomainEvent fromPrimitives(String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn) {
+        return new NotificationReadDomainEvent(
                 aggregateId,
                 eventId,
                 occurredOn,
@@ -55,7 +61,7 @@ public class NotificationReadDomainEvent extends DomainEvent {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         NotificationReadDomainEvent that = (NotificationReadDomainEvent) o;
-        return recipientUserId.equals(that.recipientUserId) && sourceUserId.equals(that.sourceUserId);
+        return Objects.equals(recipientUserId, that.recipientUserId) && Objects.equals(sourceUserId, that.sourceUserId);
     }
 
     @Override

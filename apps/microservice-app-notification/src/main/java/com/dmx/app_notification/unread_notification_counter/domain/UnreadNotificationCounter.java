@@ -6,16 +6,16 @@ import java.util.Objects;
 
 public final class UnreadNotificationCounter {
     private final UserId userId;
-    private UnreadNotificationCount unreadCount;
+    private UnreadNotificationCount count;
 
-    public UnreadNotificationCounter(UserId userId, UnreadNotificationCount unreadCount) {
+    public UnreadNotificationCounter(UserId userId, UnreadNotificationCount count) {
         this.userId = userId;
-        this.unreadCount = unreadCount != null ? unreadCount : UnreadNotificationCount.zero();
+        this.count = count != null ? count : UnreadNotificationCount.zero();
     }
 
     private UnreadNotificationCounter() {
         this.userId = null;
-        this.unreadCount = null;
+        this.count = null;
     }
 
     public static UnreadNotificationCounter create(UserId userId) {
@@ -27,32 +27,32 @@ public final class UnreadNotificationCounter {
     }
 
     public UnreadNotificationCount getUnreadCount() {
-        return unreadCount;
+        return count;
     }
 
     public void increment() {
-        this.unreadCount = this.unreadCount.increment();
+        this.count = this.count.increment();
     }
 
     public void decrement() {
-        this.unreadCount = this.unreadCount.decrement();
+        this.count = this.count.decrement();
     }
 
     public void reset() {
-        this.unreadCount = UnreadNotificationCount.zero();
+        this.count = UnreadNotificationCount.zero();
     }
 
     public UnreadNotificationCounterDTO toPrimitives() {
         return new UnreadNotificationCounterDTO(
                 this.userId.value(),
-                this.unreadCount.value()
+                this.count.value()
         );
     }
 
     public static UnreadNotificationCounter fromPrimitives(UnreadNotificationCounterDTO dto) {
         return new UnreadNotificationCounter(
                 new UserId(dto.userId()),
-                new UnreadNotificationCount(dto.unreadCount())
+                new UnreadNotificationCount(dto.count())
         );
     }
 

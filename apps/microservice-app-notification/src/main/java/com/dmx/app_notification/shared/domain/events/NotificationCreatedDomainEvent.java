@@ -27,6 +27,12 @@ public class NotificationCreatedDomainEvent extends DomainEvent {
         this.sourceUserId = sourceUserId;
     }
 
+    public NotificationCreatedDomainEvent() {
+        super();
+        this.recipientUserId = null;
+        this.sourceUserId = null;
+    }
+
     @Override
     public String eventName() {
         return "app.notification.created";
@@ -55,8 +61,7 @@ public class NotificationCreatedDomainEvent extends DomainEvent {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         NotificationCreatedDomainEvent that = (NotificationCreatedDomainEvent) o;
-        return recipientUserId.equals(that.recipientUserId) &&
-                sourceUserId.equals(that.sourceUserId);
+        return Objects.equals(recipientUserId, that.recipientUserId) && Objects.equals(sourceUserId, that.sourceUserId);
     }
 
     @Override

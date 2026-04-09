@@ -1,16 +1,21 @@
 ## Environment files
 /apps/microservice-social-graph/src/main/resources/.env
 /apps/microservice-user-profile/src/main/resources/.env
+/apps/microservice-app-notification/src/main/resources/.env
+
 /apps/microservice-social-graph/src/main/resources/.env.docker
 /apps/microservice-user-profile/src/main/resources/.env.docker
+/apps/microservice-app-notification/src/main/resources/.env.docker
 
 ## Test files
 /apps/microservice-social-graph/src/main/java/com/dmx/server/Test
 /apps/microservice-user-profile/src/main/java/com/dmx/server/Test
+/apps/microservice-app-notification/src/main/java/com/dmx/server/Test
 
 ## Maven build directories
 /apps/microservice-social-graph/target/
 /apps/microservice-user-profile/target/
+/apps/microservice-app-notification/target/
 /libs/bus/target/
 /libs/persistence/target/
 /libs/shared-kernel/target/

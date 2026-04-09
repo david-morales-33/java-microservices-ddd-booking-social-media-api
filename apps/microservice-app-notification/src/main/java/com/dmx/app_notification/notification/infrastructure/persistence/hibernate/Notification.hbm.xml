@@ -23,7 +23,7 @@
         <component name="status" class="com.dmx.app_notification.notification.domain.NotificationStatus" access="field">
             <property name="value" column="nft_status" type="string" length="20" access="field" not-null="true"/>
         </component>
-        <component name="createAt" class="com.dmx.app_notification.notification.domain.NotificationInstant" access="field">
+        <component name="createdAt" class="com.dmx.app_notification.notification.domain.NotificationInstant" access="field">
             <property name="value" column="nft_create_at" type="timestamp" access="field" not-null="true"/>
         </component>
         <component name="readAt" class="com.dmx.app_notification.notification.domain.NotificationInstant" access="field">
