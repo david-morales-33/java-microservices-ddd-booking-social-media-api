@@ -5,7 +5,6 @@ import com.dmx.shared.kernel.events.OutboxEventRepository;
 import jakarta.persistence.LockModeType;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.SessionFactory;
 

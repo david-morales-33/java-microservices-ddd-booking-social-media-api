@@ -14,10 +14,10 @@ import java.io.IOException;
 @Configuration
 @EnableTransactionManagement
 public class SocialGraphHibernateConfiguration {
-    private final HibernateConfigurationFactory factory;
+    private final SocialGraphHibernateConfigurationFactory factory;
     private final Parameter                     config;
 
-    public SocialGraphHibernateConfiguration(HibernateConfigurationFactory factory, Parameter config) {
+    public SocialGraphHibernateConfiguration(SocialGraphHibernateConfigurationFactory factory, Parameter config) {
         this.factory = factory;
         this.config  = config;
     }

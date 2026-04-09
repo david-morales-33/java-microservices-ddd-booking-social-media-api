@@ -1,30 +1,24 @@
 package com.dmx.server;
 
 
-import com.dmx.shared.kernel.events.OutboxEvent;
 import com.dmx.social_graph.shared.infrastructure.config.ParameterNotExist;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import com.dmx.social_graph.shared.infrastructure.hibernate.HibernateConfigurationFactory;
+import com.dmx.social_graph.shared.infrastructure.hibernate.SocialGraphHibernateConfigurationFactory;
 
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws IOException, ParameterNotExist {
 
         ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
-        HibernateConfigurationFactory factory = new HibernateConfigurationFactory(resourceResolver);
+        SocialGraphHibernateConfigurationFactory factory = new SocialGraphHibernateConfigurationFactory(resourceResolver);
 
         DataSource dataSource = factory.dataSource(
                 "localhost",

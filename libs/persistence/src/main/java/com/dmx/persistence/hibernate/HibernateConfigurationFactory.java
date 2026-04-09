@@ -1,6 +1,5 @@
 package com.dmx.persistence.hibernate;
 
-import com.dmx.shared.kernel.Service;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.core.io.Resource;
@@ -14,7 +13,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-
 
 public abstract class HibernateConfigurationFactory {
     private final ResourcePatternResolver resourceResolver;
