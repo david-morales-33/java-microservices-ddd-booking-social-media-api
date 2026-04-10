@@ -35,7 +35,7 @@ services:
     volumes:
       - social_graph_db_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d management_booking_social_media_social_graph"]
+      test: [ "CMD-SHELL", "pg_isready -U admin -d management_booking_social_media_social_graph" ]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -57,7 +57,29 @@ services:
     volumes:
       - user_profile_db_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d management_booking_social_media_user_profile"]
+      test: [ "CMD-SHELL", "pg_isready -U admin -d management_booking_social_media_user_profile" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app-notification-db:
+    image: postgres:16
+    container_name: app-notification-db
+    environment:
+      POSTGRES_DB: management_booking_social_media_app_notification
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Sistemas-2020
+    command: >
+      postgres
+      -c wal_level=logical
+      -c max_wal_senders=10
+      -c max_replication_slots=10
+    ports:
+      - "5435:5432"
+    volumes:
+      - app_notification_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d management_booking_social_media_app_notification" ]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -88,6 +110,19 @@ services:
     volumes:
       - ./apps/microservice-user-profile/src/main/resources/.env.docker:/.env:ro
 
+  microservice-app-notification:
+    build:
+      context: .
+      dockerfile: apps/microservice-app-notification/Dockerfile
+    container_name: microservice-app-notification
+    depends_on:
+      app-notification-db:
+        condition: service_healthy
+    ports:
+      - "8092:8090"
+    volumes:
+      - ./apps/microservice-app-notification/src/main/resources/.env.docker:/.env:ro
+
   connect:
     image: debezium/connect:2.5
     container_name: debezium-connector-server
@@ -107,3 +142,4 @@ services:
 volumes:
   social_graph_db_data:
   user_profile_db_data:
+  app_notification_db_data:

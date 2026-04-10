@@ -1,6 +1,6 @@
 package com.dmx.profile.user_profile.infrastructure.persistence;
 
-import com.dmx.persistence.hibernate.HibernateRepository;
+import com.dmx.infrastructure.persistence.hibernate.HibernateRepository;
 import com.dmx.profile.user_profile.domain.UserProfile;
 import com.dmx.profile.user_profile.domain.UserProfileId;
 import com.dmx.profile.user_profile.domain.UserProfileRepository;

@@ -8,8 +8,8 @@ COPY pom.xml pom.xml
 COPY libs/shared-kernel/pom.xml libs/shared-kernel/pom.xml
 COPY libs/shared-kernel/src libs/shared-kernel/src
 
-COPY libs/persistence/pom.xml libs/persistence/pom.xml
-COPY libs/persistence/src libs/persistence/src
+COPY libs/infrastructure/pom.xml libs/infrastructure/pom.xml
+COPY libs/infrastructure/src libs/infrastructure/src
 
 COPY libs/bus/pom.xml libs/bus/pom.xml
 COPY libs/bus/src libs/bus/src

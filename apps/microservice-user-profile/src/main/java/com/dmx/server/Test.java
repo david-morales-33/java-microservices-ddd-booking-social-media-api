@@ -1,6 +1,6 @@
 package com.dmx.server;
 
-import com.dmx.profile.shared.infrastructure.hibernate.HibernateConfigurationFactory;
+import com.dmx.profile.shared.infrastructure.hibernate.ProfileHibernateConfigurationFactory;
 import com.dmx.profile.user_profile.domain.UserProfile;
 import com.dmx.profile.user_profile.domain.UserProfileId;
 import org.hibernate.Session;
@@ -17,7 +17,7 @@ public class Test {
     public static void main(String[] args) throws IOException {
 
         ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
-        HibernateConfigurationFactory factory = new HibernateConfigurationFactory(resourceResolver);
+        ProfileHibernateConfigurationFactory factory = new ProfileHibernateConfigurationFactory(resourceResolver);
 
         DataSource dataSource = factory.dataSource(
                 "localhost",

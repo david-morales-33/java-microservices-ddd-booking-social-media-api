@@ -14,10 +14,10 @@ import java.io.IOException;
 @Configuration
 @EnableTransactionManagement
 public class ProfileHibernateConfiguration {
-    private final HibernateConfigurationFactory factory;
+    private final ProfileHibernateConfigurationFactory factory;
     private final Parameter                     config;
 
-    public ProfileHibernateConfiguration(HibernateConfigurationFactory factory, Parameter config) {
+    public ProfileHibernateConfiguration(ProfileHibernateConfigurationFactory factory, Parameter config) {
         this.factory = factory;
         this.config  = config;
     }

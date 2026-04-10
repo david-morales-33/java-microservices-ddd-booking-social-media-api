@@ -28,7 +28,7 @@
         </dependency>
         <dependency>
             <groupId>com.dmx.libs</groupId>
-            <artifactId>persistence</artifactId>
+            <artifactId>infrastructure</artifactId>
         </dependency>
         <dependency>
             <groupId>org.reflections</groupId>
