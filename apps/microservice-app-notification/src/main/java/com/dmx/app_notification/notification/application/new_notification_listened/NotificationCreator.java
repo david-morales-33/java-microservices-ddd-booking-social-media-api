@@ -1,4 +1,4 @@
-package com.dmx.app_notification.notification.application.create_notification;
+package com.dmx.app_notification.notification.application.new_notification_listened;
 
 import com.dmx.app_notification.notification.domain.*;
 import com.dmx.bus.event.EventBus;

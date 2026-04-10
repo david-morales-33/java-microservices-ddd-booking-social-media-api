@@ -1,6 +1,5 @@
 package com.dmx.app_notification.notification.application.read_notification;
 
-import com.dmx.app_notification.notification.application.create_notification.NotificationCreator;
 import com.dmx.app_notification.notification.domain.Notification;
 import com.dmx.app_notification.notification.domain.NotificationId;
 import com.dmx.app_notification.notification.domain.NotificationNotFoundException;
