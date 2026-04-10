@@ -1,6 +1,6 @@
 package com.dmx.social_graph.follow.infrastructure.persistence;
 
-import com.dmx.persistence.hibernate.HibernateRepository;
+import com.dmx.infrastructure.persistence.hibernate.HibernateRepository;
 import com.dmx.shared.kernel.Service;
 import com.dmx.shared.kernel.criteria.Criteria;
 import com.dmx.shared.kernel.criteria.Filter;

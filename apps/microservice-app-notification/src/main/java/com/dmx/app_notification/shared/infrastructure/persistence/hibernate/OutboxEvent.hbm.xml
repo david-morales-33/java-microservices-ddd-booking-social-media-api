@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dmx.shared.kernel.events.OutboxEvent" table="tbl_outbox_event">
+        <id name="id" column="evt_id" type="string" length="36">
+            <generator class="assigned"/>
+        </id>
+        <property name="aggregateId" column="evt_aggregate_id" type="string"/>
+        <property name="eventName" column="evt_name" type="string"/>
+        <property name="body" column="evt_body" type="text"/>
+        <property name="occurredOn" column="evt_occurred_on" type="timestamp"/>
+    </class>
+</hibernate-mapping>

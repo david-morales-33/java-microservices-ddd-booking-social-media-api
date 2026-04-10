@@ -9,6 +9,8 @@
     <file url="file://$PROJECT_DIR$/apps/microservice-user-profile/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/libs/bus/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/libs/bus/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/infrastructure/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/libs/persistence/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/libs/persistence/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/libs/shared-kernel/src/main/java" charset="UTF-8" />

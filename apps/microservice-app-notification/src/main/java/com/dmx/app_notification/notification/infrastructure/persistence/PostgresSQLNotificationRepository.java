@@ -4,7 +4,7 @@ import com.dmx.app_notification.notification.domain.Notification;
 import com.dmx.app_notification.notification.domain.NotificationId;
 import com.dmx.app_notification.notification.domain.NotificationRepository;
 import com.dmx.app_notification.notification.domain.UserId;
-import com.dmx.persistence.hibernate.HibernateRepository;
+import com.dmx.infrastructure.persistence.hibernate.HibernateRepository;
 import com.dmx.shared.kernel.Service;
 import com.dmx.shared.kernel.criteria.Criteria;
 import com.dmx.shared.kernel.criteria.Filter;

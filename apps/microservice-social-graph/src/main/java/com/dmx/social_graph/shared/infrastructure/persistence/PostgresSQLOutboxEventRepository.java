@@ -1,6 +1,6 @@
 package com.dmx.social_graph.shared.infrastructure.persistence;
 
-import com.dmx.persistence.hibernate.HibernateOutboxEventRepository;
+import com.dmx.infrastructure.persistence.hibernate.HibernateOutboxEventRepository;
 import com.dmx.shared.kernel.Service;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;

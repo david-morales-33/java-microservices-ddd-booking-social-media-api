@@ -5,7 +5,7 @@ import com.dmx.social_graph.shared.infrastructure.config.ParameterNotExist;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import com.dmx.social_graph.shared.infrastructure.hibernate.SocialGraphHibernateConfigurationFactory;
+import com.dmx.social_graph.shared.infrastructure.persistence.hibernate.SocialGraphHibernateConfigurationFactory;
 
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;

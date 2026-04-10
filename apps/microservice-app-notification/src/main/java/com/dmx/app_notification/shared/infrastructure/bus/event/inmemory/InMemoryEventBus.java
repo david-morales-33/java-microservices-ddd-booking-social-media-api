@@ -4,16 +4,16 @@ import com.dmx.bus.event.DomainEventSubscriber;
 import com.dmx.bus.event.EventBus;
 import com.dmx.shared.kernel.Service;
 import com.dmx.shared.kernel.events.DomainEvent;
-import com.dmx.app_notification.shared.infrastructure.bus.event.DomainEventSubscribersInformation;
+import com.dmx.app_notification.shared.infrastructure.bus.event.AppNotificationDomainEventSubscribersInformation;
 
 import java.util.List;
 
 @Service
 public class InMemoryEventBus implements EventBus {
 
-    private final DomainEventSubscribersInformation registry;
+    private final AppNotificationDomainEventSubscribersInformation registry;
 
-    public InMemoryEventBus(DomainEventSubscribersInformation registry) {
+    public InMemoryEventBus(AppNotificationDomainEventSubscribersInformation registry) {
         this.registry = registry;
     }
 

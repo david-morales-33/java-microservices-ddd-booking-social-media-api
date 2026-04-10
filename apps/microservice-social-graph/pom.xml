@@ -86,11 +86,13 @@
         </dependency>
         <dependency>
             <groupId>com.dmx.libs</groupId>
-            <artifactId>persistence</artifactId>
+            <artifactId>bus</artifactId>
         </dependency>
         <dependency>
             <groupId>com.dmx.libs</groupId>
-            <artifactId>bus</artifactId>
+            <artifactId>infrastructure</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

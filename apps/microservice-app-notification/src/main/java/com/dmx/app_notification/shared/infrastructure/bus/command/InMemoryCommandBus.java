@@ -9,10 +9,10 @@ import org.springframework.context.ApplicationContext;
 
 @Service
 public final class InMemoryCommandBus implements CommandBus {
-    private final CommandHandlersInformation information;
+    private final AppNotificationCommandHandlersInformation information;
     private final ApplicationContext         context;
 
-    public InMemoryCommandBus(CommandHandlersInformation information, ApplicationContext context) {
+    public InMemoryCommandBus(AppNotificationCommandHandlersInformation information, ApplicationContext context) {
         this.information = information;
         this.context     = context;
     }

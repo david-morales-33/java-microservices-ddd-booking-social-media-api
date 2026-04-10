@@ -1,6 +1,6 @@
 package com.dmx.app_notification.shared.infrastructure.persistence.hibernate;
 
-import com.dmx.persistence.hibernate.HibernateConfigurationFactory;
+import com.dmx.infrastructure.persistence.hibernate.HibernateConfigurationFactory;
 import com.dmx.shared.kernel.Service;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
@@ -17,6 +17,6 @@ public class NotificationHibernateConfigurationFactory extends HibernateConfigur
 
     @Override
     protected String hbm2ddl() {
-        return "create";
+        return "update";
     }
 }

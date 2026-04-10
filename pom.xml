@@ -11,7 +11,7 @@
 
     <modules>
         <module>libs/shared-kernel</module>
-        <module>libs/persistence</module>
+        <module>libs/infrastructure</module>
         <module>libs/bus</module>
         <module>apps/microservice-app-notification</module>
         <module>apps/microservice-social-graph</module>
@@ -111,11 +111,6 @@
             <dependency>
                 <groupId>com.dmx.libs</groupId>
                 <artifactId>shared-kernel</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dmx.libs</groupId>
-                <artifactId>persistence</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

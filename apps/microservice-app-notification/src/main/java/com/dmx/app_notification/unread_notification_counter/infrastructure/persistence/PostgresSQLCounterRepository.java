@@ -3,7 +3,7 @@ package com.dmx.app_notification.unread_notification_counter.infrastructure.pers
 import com.dmx.app_notification.notification.domain.UserId;
 import com.dmx.app_notification.unread_notification_counter.domain.UnreadNotificationCounter;
 import com.dmx.app_notification.unread_notification_counter.domain.UnreadNotificationCounterRepository;
-import com.dmx.persistence.hibernate.HibernateRepository;
+import com.dmx.infrastructure.persistence.hibernate.HibernateRepository;
 import com.dmx.shared.kernel.Service;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
