@@ -4,7 +4,7 @@ public enum Status {
     READ("READ"),
     UNREAD("UNREAD");
 
-    public final String value;
+    private final String value;
 
     Status(String value) {
         this.value = value;

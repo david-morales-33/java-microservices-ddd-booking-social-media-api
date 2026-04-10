@@ -1,44 +1,35 @@
 package com.dmx.app_notification.notification.domain;
 
+import com.dmx.shared.kernel.StringValueObject;
 import com.dmx.shared.kernel.ValueObjectException;
 
-public final class NotificationStatus {
-
-    private final Status value;
+public final class NotificationStatus extends StringValueObject {
 
     private NotificationStatus() {
-        value = null;
-    }
-
-    private NotificationStatus(Status value) {
-        this.value = value;
+        super(null);
     }
 
     public NotificationStatus(String value) {
+        super(value);
         Status status = Status.fromValue(value);
         if (status == null) {
             throw new ValueObjectException(String.format("Invalid notification status <%s>", value));
         }
-        this.value = status;
     }
 
     public static NotificationStatus read() {
-        return new NotificationStatus(Status.READ);
+        return new NotificationStatus(Status.READ.value());
     }
 
     public static NotificationStatus unread() {
-        return new NotificationStatus(Status.UNREAD);
-    }
-
-    public String value() {
-        return value.value();
+        return new NotificationStatus(Status.UNREAD.value());
     }
 
     public boolean isRead() {
-        return value == Status.READ;
+        return this.value().equals(Status.READ.value());
     }
 
     public boolean isUnread() {
-        return value == Status.UNREAD;
+        return this.value().equals(Status.UNREAD.value());
     }
 }
