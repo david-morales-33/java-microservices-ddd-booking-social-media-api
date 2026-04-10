@@ -2,11 +2,11 @@ package com.dmx.server.controllers;
 
 import com.dmx.bus.command.CommandBus;
 import com.dmx.bus.query.QueryBus;
+import com.dmx.infrastructure.spring.ApiController;
 import com.dmx.shared.kernel.DomainException;
 import com.dmx.social_graph.follow.application.find_following_by_user.FindFollowingByUserQuery;
 import com.dmx.social_graph.follow.application.find_following_by_user.FollowingByUserResponse;
 import com.dmx.social_graph.follow.domain.FollowDoesNotExistException;
-import com.dmx.social_graph.shared.infrastructure.spring.ApiController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

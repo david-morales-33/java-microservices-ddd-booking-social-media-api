@@ -2,12 +2,12 @@ package com.dmx.server.controllers;
 
 import com.dmx.bus.command.CommandBus;
 import com.dmx.bus.query.QueryBus;
+import com.dmx.infrastructure.spring.ApiController;
 import com.dmx.server.dto.BlockUserRequest;
 import com.dmx.shared.kernel.DomainException;
 import com.dmx.social_graph.block.application.block_user.BlockUserCommand;
 import com.dmx.social_graph.block.domain.UserBlockNotAllowedException;
 import com.dmx.social_graph.block.domain.UserBlockThemselvesExcecption;
-import com.dmx.social_graph.shared.infrastructure.spring.ApiController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
