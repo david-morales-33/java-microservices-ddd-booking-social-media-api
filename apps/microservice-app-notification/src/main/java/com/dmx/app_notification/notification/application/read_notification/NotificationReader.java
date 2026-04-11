@@ -12,11 +12,9 @@ import java.util.Optional;
 @Service
 public class NotificationReader {
     private final NotificationRepository repository;
-    private final EventBus bus;
 
-    public NotificationReader(NotificationRepository repository, EventBus bus) {
+    public NotificationReader(NotificationRepository repository) {
         this.repository = repository;
-        this.bus = bus;
     }
 
     void execute(NotificationId id) {
@@ -28,6 +26,5 @@ public class NotificationReader {
 
         notification.read();
         repository.save(notification);
-        bus.publish(notification.pullDomainEvents());
     }
 }
