@@ -31,3 +31,4 @@ COPY --from=build /workspace/apps/microservice-app-notification/target/microserv
 
 EXPOSE 8090
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+

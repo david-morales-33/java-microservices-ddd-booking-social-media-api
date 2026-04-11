@@ -22,23 +22,14 @@ import java.util.HashMap;
 @RequestMapping("/api/msvc-app-notification")
 public class FindUnreadNotificationController extends ApiController {
 
-    AppNotificationSubscribersHandler handler;
-
-    public FindUnreadNotificationController(QueryBus queryBus, CommandBus commandBus, AppNotificationSubscribersHandler handler) {
+    public FindUnreadNotificationController(QueryBus queryBus, CommandBus commandBus) {
         super(queryBus, commandBus);
-        this.handler= handler;
     }
 
     @GetMapping(value = "/unread-notification/{recipientUserId}")
     public ResponseEntity<UnreadNotificationResponse> index(@PathVariable("recipientUserId") String recipientUserId) {
         FindUnreadNotificationQuery query= new FindUnreadNotificationQuery(recipientUserId);
         UnreadNotificationResponse response =ask(query);
-
-        UserFollowedDomainEvent event = new UserFollowedDomainEvent(
-                "0c41f247-8da0-47a9-aaf6-68e03a9c0006",
-                "0c41f247-8da0-47a9-aaf6-68e03a9c0001",
-                "0c41f247-8da0-47a9-aaf6-68e03a9c0000");
-        handler.handle(event);
 
         return ResponseEntity.ok().body(response);
     }
