@@ -36,7 +36,7 @@ public class Follow extends AggregateRoot {
                 userId,
                 followerId
         );
-        follow.record(new UserFollowedDomainEvent(followerId.value(), userId.value(), followerId.value()));
+        follow.record(new UserFollowedDomainEvent(followId.value(), followerId.value(), userId.value()));
         return follow;
     }
 
