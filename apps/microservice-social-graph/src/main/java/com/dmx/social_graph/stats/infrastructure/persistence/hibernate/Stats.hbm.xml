@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dmx.social_graph.stats.domain.Stats" table="tbl_user_stats">
+        <composite-id name="userId" class="com.dmx.social_graph.stats.domain.UserId" access="field">
+            <key-property column="sts_user_id" name="value" length="36" access="field"/>
+        </composite-id>
+        <component name="followersCount" class="com.dmx.social_graph.stats.domain.StatsCount" access="field">
+            <property name="value" column="sts_followers_count" type="integer" access="field" not-null="true"/>
+        </component>
+        <component name="followingCount" class="com.dmx.social_graph.stats.domain.StatsCount" access="field">
+            <property name="value" column="sts_users_following_count" type="integer" access="field" not-null="true"/>
+        </component>
+        <component name="mutedCount" class="com.dmx.social_graph.stats.domain.StatsCount" access="field">
+            <property name="value" column="sts_users_muted_count" type="integer" access="field" not-null="true"/>
+        </component>
+        <component name="blockedCount" class="com.dmx.social_graph.stats.domain.StatsCount" access="field">
+            <property name="value" column="sts_users_blocked_count" type="integer" access="field" not-null="true"/>
+        </component>
+    </class>
+</hibernate-mapping>
