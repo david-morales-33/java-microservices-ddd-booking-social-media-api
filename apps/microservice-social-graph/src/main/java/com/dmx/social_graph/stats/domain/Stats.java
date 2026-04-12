@@ -25,6 +25,48 @@ public final class Stats {
         this.blockedCount = null;
     }
 
+    public void incrementFollowers() {
+        this.followersCount.increment();
+    }
+
+    public void incrementUsersFollowing() {
+        this.followingCount.increment();
+    }
+
+    public void incrementMutedUsers() {
+        this.mutedCount.increment();
+    }
+
+    public void incrementBlockedUsers() {
+        this.blockedCount.increment();
+    }
+
+    public void decrementFollowers() {
+        this.followersCount.decrement();
+    }
+
+    public void decrementUsersFollowing() {
+        this.followingCount.decrement();
+    }
+
+    public void decrementMutedUsers() {
+        this.mutedCount.decrement();
+    }
+
+    public void decrementBlockedUsers() {
+        this.blockedCount.decrement();
+    }
+
+    public static Stats initialize(UserId userId) {
+        return new Stats(
+                userId,
+                StatsCount.initialize(),
+                StatsCount.initialize(),
+                StatsCount.initialize(),
+                StatsCount.initialize()
+        );
+    }
+
     public static Stats fromPrimitives(StatsDTO stats) {
         return new Stats(
                 new UserId(stats.userId()),
