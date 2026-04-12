@@ -8,11 +8,11 @@ import com.dmx.social_graph.stats.domain.StatsRepository;
 import com.dmx.social_graph.stats.domain.UserId;
 
 @Service
-public class IncrementFollowersOnFollowCreated implements DomainEventSubscriber<UserFollowedDomainEvent> {
+public class IncrementStatsOnFollowCreated implements DomainEventSubscriber<UserFollowedDomainEvent> {
 
     private final StatsRepository repository;
 
-    public IncrementFollowersOnFollowCreated(StatsRepository repository) {
+    public IncrementStatsOnFollowCreated(StatsRepository repository) {
         this.repository = repository;
     }
 
