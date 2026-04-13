@@ -26,35 +26,35 @@ public final class Stats {
     }
 
     public void incrementFollowers() {
-        this.followersCount.increment();
+        this.followersCount = this.followersCount.increment();
     }
 
     public void incrementUsersFollowing() {
-        this.followingCount.increment();
+        this.followingCount = this.followingCount.increment();
     }
 
     public void incrementMutedUsers() {
-        this.mutedCount.increment();
+        this.mutedCount = this.mutedCount.increment();
     }
 
     public void incrementBlockedUsers() {
-        this.blockedCount.increment();
+        this.blockedCount = this.blockedCount.increment();
     }
 
     public void decrementFollowers() {
-        this.followersCount.decrement();
+        this.followersCount = this.followersCount.decrement();
     }
 
     public void decrementUsersFollowing() {
-        this.followingCount.decrement();
+        this.followingCount = this.followingCount.decrement();
     }
 
     public void decrementMutedUsers() {
-        this.mutedCount.decrement();
+        this.mutedCount = this.mutedCount.decrement();
     }
 
     public void decrementBlockedUsers() {
-        this.blockedCount.decrement();
+        this.blockedCount = this.blockedCount.decrement();
     }
 
     public static Stats initialize(UserId userId) {

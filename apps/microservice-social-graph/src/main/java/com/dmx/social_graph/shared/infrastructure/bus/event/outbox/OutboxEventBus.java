@@ -5,11 +5,9 @@ import com.dmx.shared.kernel.events.DomainEvent;
 import com.dmx.bus.event.EventBus;
 import com.dmx.shared.kernel.events.OutboxEvent;
 import com.dmx.shared.kernel.events.OutboxEventRepository;
-import org.springframework.context.annotation.Primary;
 
 import java.util.List;
 
-@Primary
 @Service
 public final class OutboxEventBus implements EventBus {
 
