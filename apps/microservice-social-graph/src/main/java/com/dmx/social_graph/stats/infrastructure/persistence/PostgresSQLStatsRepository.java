@@ -22,8 +22,6 @@ public class PostgresSQLStatsRepository implements StatsRepository {
     @Override
     public void save(Stats stats) {
         sessionFactory.getCurrentSession().persist(stats);
-        sessionFactory.getCurrentSession().flush();
-        sessionFactory.getCurrentSession().clear();
     }
 
     @Override

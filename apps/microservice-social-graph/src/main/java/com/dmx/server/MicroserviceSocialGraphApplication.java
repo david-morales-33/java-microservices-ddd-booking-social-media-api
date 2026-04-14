@@ -13,9 +13,7 @@ import org.springframework.context.annotation.FilterType;
 		value = "com.dmx"
 )
 public class MicroserviceSocialGraphApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(MicroserviceSocialGraphApplication.class, args);
 	}
-
 }

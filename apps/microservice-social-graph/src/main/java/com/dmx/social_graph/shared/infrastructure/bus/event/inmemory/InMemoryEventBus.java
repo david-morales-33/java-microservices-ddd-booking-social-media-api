@@ -19,11 +19,8 @@ public class InMemoryEventBus implements EventBus {
 
     @Override
     public void publish(List<DomainEvent> events) {
-        System.out.println("Publishhhh...");
         for (DomainEvent event : events) {
-            List<DomainEventSubscriber<?>> subscribers =
-                    registry.search(event.eventName());
-
+            List<DomainEventSubscriber<?>> subscribers = registry.search(event.eventName());
             for (DomainEventSubscriber subscriber : subscribers) {
                 subscriber.on(event);
             }

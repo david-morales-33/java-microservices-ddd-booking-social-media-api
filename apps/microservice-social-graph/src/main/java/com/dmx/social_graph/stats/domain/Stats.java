@@ -3,7 +3,7 @@ package com.dmx.social_graph.stats.domain;
 import java.util.Objects;
 
 public final class Stats {
-    private UserId userId;
+    private final UserId userId;
     private StatsCount followersCount;
     private StatsCount followingCount;
     private StatsCount mutedCount;
@@ -111,6 +111,7 @@ public final class Stats {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Stats stats = (Stats) o;
+        assert userId != null;
         return userId.equals(stats.userId) &&
                 followersCount.equals(stats.followersCount) &&
                 followingCount.equals(stats.followingCount) &&
