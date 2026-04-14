@@ -1,4 +1,4 @@
-package com.dmx.social_graph.stats.application;
+package com.dmx.social_graph.stats.application.subscribers;
 
 import com.dmx.bus.event.DomainEventSubscriber;
 import com.dmx.shared.kernel.Service;
