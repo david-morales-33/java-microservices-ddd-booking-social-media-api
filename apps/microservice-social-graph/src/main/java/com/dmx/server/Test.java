@@ -1,7 +1,7 @@
 package com.dmx.server;
 
 
-import com.dmx.social_graph.shared.infrastructure.config.ParameterNotExist;
+import com.dmx.infrastructure.config.ParameterNotExist;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

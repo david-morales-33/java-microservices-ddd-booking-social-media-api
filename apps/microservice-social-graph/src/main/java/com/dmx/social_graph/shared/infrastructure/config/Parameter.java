@@ -1,5 +1,6 @@
 package com.dmx.social_graph.shared.infrastructure.config;
 
+import com.dmx.infrastructure.config.ParameterNotExist;
 import com.dmx.shared.kernel.Service;
 import io.github.cdimascio.dotenv.Dotenv;
 

@@ -1,7 +1,7 @@
 package com.dmx.social_graph.shared.infrastructure.persistence.hibernate;
 
+import com.dmx.infrastructure.config.ParameterNotExist;
 import com.dmx.social_graph.shared.infrastructure.config.Parameter;
-import com.dmx.social_graph.shared.infrastructure.config.ParameterNotExist;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
