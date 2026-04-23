@@ -1,13 +1,26 @@
 {
   "mappings": {
     "properties": {
-      "userId": { "type": "keyword" },
-      "followerId": { "type": "keyword" },
-      "followerName": {
+      "userId": {
+        "type": "keyword"
+      },
+      "followerId": {
+        "type": "keyword"
+      },
+      "name": {
         "type": "text",
         "fields": {
-          "keyword": { "type": "keyword" }
+          "keyword": {
+            "type": "keyword"
+          }
         }
+      },
+      "followOn": {
+        "type": "date"
+      },
+      "photo": {
+        "type": "keyword",
+        "index": false
       }
     }
   }

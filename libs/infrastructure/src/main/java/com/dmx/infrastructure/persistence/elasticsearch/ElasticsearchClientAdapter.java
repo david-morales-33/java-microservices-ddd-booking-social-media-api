@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public final class ElasticsearchClientAdapter {
+public abstract class ElasticsearchClientAdapter {
     private final ElasticsearchClient client;
     private final String indexPrefix;
 

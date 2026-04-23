@@ -24,8 +24,8 @@ public class SocialGraphElasticsearchConfiguration extends ElasticsearchConfigur
         super(resourceResolver);
         this.config = config;
     }
-    @Bean
     @Override
+    @Bean
     public ElasticsearchClient elasticsearchClient() throws ParameterNotExist, Exception {
         RestClient restClient = RestClient.builder(
                 new HttpHost(
