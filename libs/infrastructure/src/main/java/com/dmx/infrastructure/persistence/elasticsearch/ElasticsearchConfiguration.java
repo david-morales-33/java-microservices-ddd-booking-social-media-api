@@ -17,9 +17,7 @@ public abstract class ElasticsearchConfiguration {
     }
 
     protected void generateIndexIfNotExists(ElasticsearchClient client) throws IOException {
-        Resource[] jsonsIndexes = resourceResolver.getResources(
-                String.format("classpath:database/elasticsearch/%s/*.json", getModule())
-        );
+        Resource[] jsonsIndexes = resourceResolver.getResources("classpath:database/read_model/elasticsearch/*.json");
 
         for (Resource jsonIndex : jsonsIndexes) {
             String indexName = Objects.requireNonNull(jsonIndex.getFilename()).replace(".json", "");
@@ -43,6 +41,4 @@ public abstract class ElasticsearchConfiguration {
     }
 
     public abstract ElasticsearchClient elasticsearchClient() throws ParameterNotExist, Exception;
-
-    public abstract String getModule();
 }

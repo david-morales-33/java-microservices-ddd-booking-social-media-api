@@ -50,9 +50,4 @@ public class SocialGraphElasticsearchConfiguration extends ElasticsearchConfigur
 
         return client;
     }
-
-    @Override
-    public String getModule() {
-        return "social_graph";
-    }
 }
