@@ -7,14 +7,12 @@ import com.dmx.shared.kernel.criteria.Criteria;
 import com.dmx.social_graph.follower.domain.FollowerDTO;
 import com.dmx.social_graph.follower.domain.FollowerMapper;
 import com.dmx.social_graph.follower.domain.FollowerRepository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@Transactional("social_graph-transaction_manager")
-public class ElasticsearchFollowRepository extends ElasticsearchRepository<FollowerDTO> implements FollowerRepository {
-    public ElasticsearchFollowRepository(ElasticsearchClientAdapter client) {
+public class ElasticsearchFollowerRepository extends ElasticsearchRepository<FollowerDTO> implements FollowerRepository {
+    public ElasticsearchFollowerRepository(ElasticsearchClientAdapter client) {
         super(client);
     }
 
@@ -25,7 +23,7 @@ public class ElasticsearchFollowRepository extends ElasticsearchRepository<Follo
 
     @Override
     public void save(FollowerDTO follower) {
-        persist(follower.followerId(), FollowerMapper.toPlainData(follower));
+        persist(FollowerMapper.id(follower), FollowerMapper.toPlainData(follower));
     }
 
     @Override

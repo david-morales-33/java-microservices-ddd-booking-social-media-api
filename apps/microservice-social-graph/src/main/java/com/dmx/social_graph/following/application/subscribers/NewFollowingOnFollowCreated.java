@@ -1,31 +1,29 @@
-package com.dmx.social_graph.follower.application.subscribers;
+package com.dmx.social_graph.following.application.subscribers;
 
 import com.dmx.bus.event.DomainEventSubscriber;
 import com.dmx.shared.kernel.Service;
-import com.dmx.social_graph.follower.domain.FollowerDTO;
-import com.dmx.social_graph.follower.domain.FollowerRepository;
+import com.dmx.social_graph.following.domain.FollowingDTO;
+import com.dmx.social_graph.following.domain.FollowingRepository;
 import com.dmx.social_graph.shared.domain.events.UserFollowedDomainEvent;
 
 @Service
-public class NewFollowerOnFollowCreate implements DomainEventSubscriber<UserFollowedDomainEvent> {
+public class NewFollowingOnFollowCreated implements DomainEventSubscriber<UserFollowedDomainEvent> {
+    private final FollowingRepository repository;
 
-    private final FollowerRepository repository;
-
-    public NewFollowerOnFollowCreate(FollowerRepository repository) {
+    public NewFollowingOnFollowCreated(FollowingRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public void on(UserFollowedDomainEvent event) {
-
-        FollowerDTO follower = new FollowerDTO(
-                event.getFollowedId(),
+        FollowingDTO following = new FollowingDTO(
                 event.getFollowerId(),
+                event.getFollowedId(),
                 "nn",
                 event.occurredOn(),
                 "none"
         );
-        repository.save(follower);
+        repository.save(following);
     }
 
     @Override

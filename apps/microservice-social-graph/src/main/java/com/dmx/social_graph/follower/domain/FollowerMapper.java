@@ -1,5 +1,8 @@
 package com.dmx.social_graph.follower.domain;
 
+import com.dmx.social_graph.following.domain.FollowingDTO;
+import com.dmx.social_graph.following.domain.FollowingDocumentId;
+
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -14,6 +17,7 @@ public final class FollowerMapper {
 
         }};
     }
+
     public static FollowerDTO toDTO(HashMap<String, Serializable> plainData) {
         return new FollowerDTO(
                 (String) plainData.get("followerId"),
@@ -22,5 +26,9 @@ public final class FollowerMapper {
                 (String) plainData.get("followOn"),
                 (String) plainData.get("photo")
         );
+    }
+
+    public static String id(FollowerDTO follower) {
+        return FollowingDocumentId.of(follower.userId(), follower.followerId());
     }
 }
