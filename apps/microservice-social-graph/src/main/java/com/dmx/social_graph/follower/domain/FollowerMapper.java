@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 public final class FollowerMapper {
-
     public static HashMap<String, Serializable> toPlainData(FollowerDTO followerDTO) {
         return new HashMap<>() {{
             put("followerId", followerDTO.followerId());
@@ -15,7 +14,6 @@ public final class FollowerMapper {
 
         }};
     }
-
     public static FollowerDTO toDTO(HashMap<String, Serializable> plainData) {
         return new FollowerDTO(
                 (String) plainData.get("followerId"),
