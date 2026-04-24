@@ -1,8 +1,8 @@
-package com.dmx.social_graph.shared.infrastructure.bus.event;
+package com.dmx.profile.shared.infrastructure.bus.event;
 
-import com.dmx.shared.kernel.events.DomainEvent;
 import com.dmx.bus.event.DomainEventSubscriber;
 import com.dmx.shared.kernel.Service;
+import com.dmx.shared.kernel.events.DomainEvent;
 
 import java.util.*;
 

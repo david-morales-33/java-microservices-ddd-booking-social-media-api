@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional("user_profile-transaction_manager")
 public class PostgresSQLOutboxEventRepository extends HibernateOutboxEventRepository {
-    public PostgresSQLOutboxEventRepository(@Qualifier("user_profile-session_factory") SessionFactory sessionFactory) {
+    public PostgresSQLOutboxEventRepository(@Qualifier("profile-session_factory") SessionFactory sessionFactory) {
         super(sessionFactory);
     }
 }

@@ -1,10 +1,10 @@
-package com.dmx.social_graph.shared.infrastructure.bus.event.inmemory;
+package com.dmx.profile.shared.infrastructure.bus.event.inmemory;
 
-import com.dmx.shared.kernel.events.DomainEvent;
 import com.dmx.bus.event.DomainEventSubscriber;
 import com.dmx.bus.event.EventBus;
+import com.dmx.profile.shared.infrastructure.bus.event.DomainEventSubscribersInformation;
 import com.dmx.shared.kernel.Service;
-import com.dmx.social_graph.shared.infrastructure.bus.event.DomainEventSubscribersInformation;
+import com.dmx.shared.kernel.events.DomainEvent;
 
 import java.util.List;
 

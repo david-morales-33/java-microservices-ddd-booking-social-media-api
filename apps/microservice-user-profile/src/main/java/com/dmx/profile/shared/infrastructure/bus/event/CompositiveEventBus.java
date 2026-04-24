@@ -1,10 +1,10 @@
-package com.dmx.social_graph.shared.infrastructure.bus.event;
+package com.dmx.profile.shared.infrastructure.bus.event;
 
 import com.dmx.bus.event.EventBus;
+import com.dmx.profile.shared.infrastructure.bus.event.inmemory.InMemoryEventBus;
+import com.dmx.profile.shared.infrastructure.bus.event.outbox.OutboxEventBus;
 import com.dmx.shared.kernel.Service;
 import com.dmx.shared.kernel.events.DomainEvent;
-import com.dmx.social_graph.shared.infrastructure.bus.event.inmemory.InMemoryEventBus;
-import com.dmx.social_graph.shared.infrastructure.bus.event.outbox.OutboxEventBus;
 import org.springframework.context.annotation.Primary;
 
 import java.util.List;
