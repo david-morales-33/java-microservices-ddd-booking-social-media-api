@@ -8,10 +8,12 @@ import com.dmx.profile.photo.domain.Photo;
 import com.dmx.profile.photo.domain.PhotoDTO;
 import com.dmx.profile.role.domain.Role;
 import com.dmx.profile.role.domain.RoleDTO;
+import com.dmx.profile.shared.domain.events.UserProfileCreatedDomainEvent;
 import com.dmx.profile.skill.domain.Skill;
 import com.dmx.profile.skill.domain.SkillDTO;
 import com.dmx.profile.status.domain.Status;
 import com.dmx.shared.kernel.AggregateRoot;
+import com.dmx.shared.kernel.Utils;
 
 import java.util.*;
 
@@ -146,7 +148,15 @@ public final class UserProfile extends AggregateRoot {
             UserProfileDescription description,
             Status status
     ) {
-        return new UserProfile(id, name, nickname, email, age, gender, description, status, new HashMap<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        UserProfile userProfile = new UserProfile(id, name, nickname, email, age, gender, description, status, new HashMap<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        userProfile.record(new UserProfileCreatedDomainEvent(
+                id.value(),
+                name.value(),
+                nickname.value(),
+                "none",
+                description.value()
+        ));
+        return userProfile;
     }
 
     public void addPhotos(Photo photo) {
