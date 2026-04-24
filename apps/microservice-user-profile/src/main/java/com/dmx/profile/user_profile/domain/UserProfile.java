@@ -153,8 +153,7 @@ public final class UserProfile extends AggregateRoot {
                 id.value(),
                 name.value(),
                 nickname.value(),
-                "none",
-                description.value()
+                "none"
         ));
         return userProfile;
     }

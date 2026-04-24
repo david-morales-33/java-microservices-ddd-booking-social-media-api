@@ -1,4 +1,4 @@
-package com.dmx.social_graph.shared.infrastructure.persistence;
+package com.dmx.profile.shared.infrastructure.persistence;
 
 import com.dmx.infrastructure.persistence.hibernate.HibernateOutboxEventRepository;
 import com.dmx.shared.kernel.Service;
@@ -9,9 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Primary
 @Service
-@Transactional("social_graph-transaction_manager")
+@Transactional("user_profile-transaction_manager")
 public class PostgresSQLOutboxEventRepository extends HibernateOutboxEventRepository {
-    public PostgresSQLOutboxEventRepository(@Qualifier("social_graph-session_factory") SessionFactory sessionFactory) {
+    public PostgresSQLOutboxEventRepository(@Qualifier("user_profile-session_factory") SessionFactory sessionFactory) {
         super(sessionFactory);
     }
 }

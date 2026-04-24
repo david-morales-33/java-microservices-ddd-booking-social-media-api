@@ -10,29 +10,25 @@ public class UserProfileCreatedDomainEvent extends DomainEvent {
     private final String name;
     private final String nickname;
     private final String photo;
-    private final String description;
 
-    public UserProfileCreatedDomainEvent(String aggregateId, String name, String nickname, String photo, String description) {
+    public UserProfileCreatedDomainEvent(String aggregateId, String name, String nickname, String photo) {
         super(aggregateId);
         this.name = name;
         this.nickname = nickname;
         this.photo = photo;
-        this.description = description;
     }
 
-    public UserProfileCreatedDomainEvent(String aggregateId, String eventId, String occurredOn, String name, String nickname, String photo, String description) {
+    public UserProfileCreatedDomainEvent(String aggregateId, String eventId, String occurredOn, String name, String nickname, String photo) {
         super(aggregateId, eventId, occurredOn);
         this.name = name;
         this.nickname = nickname;
         this.photo = photo;
-        this.description = description;
     }
 
-    public UserProfileCreatedDomainEvent(String name, String nickname, String photo, String description) {
+    public UserProfileCreatedDomainEvent(String name, String nickname, String photo) {
         this.name = name;
         this.nickname = nickname;
         this.photo = photo;
-        this.description = description;
     }
 
     @Override
@@ -52,18 +48,12 @@ public class UserProfileCreatedDomainEvent extends DomainEvent {
         return photo;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     @Override
     public HashMap<String, Serializable> toPrimitives() {
         return new HashMap<>() {{
             put("name", name);
             put("nickname", nickname);
             put("photo", photo);
-            put("description", description);
-
         }};
     }
 
@@ -75,8 +65,7 @@ public class UserProfileCreatedDomainEvent extends DomainEvent {
                 occurredOn,
                 (String) body.get("name"),
                 (String) body.get("nickname"),
-                (String) body.get("photo"),
-                (String) body.get("description")
+                (String) body.get("photo")
 
         );
     }
@@ -88,12 +77,11 @@ public class UserProfileCreatedDomainEvent extends DomainEvent {
         return aggregateId().equals(that.aggregateId()) &&
                 name.equals(that.name) &&
                 nickname.equals(that.nickname) &&
-                photo.equals(that.photo) &&
-                description.equals(that.description);
+                photo.equals(that.photo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(aggregateId(), name, nickname, photo, description);
+        return Objects.hash(aggregateId(), name, nickname, photo);
     }
 }
