@@ -1,6 +1,6 @@
 package com.dmx.server;
 
-import com.dmx.profile.shared.infrastructure.hibernate.ProfileHibernateConfigurationFactory;
+import com.dmx.profile.shared.infrastructure.persistence.hibernate.ProfileHibernateConfigurationFactory;
 import com.dmx.profile.user_profile.domain.UserProfile;
 import com.dmx.profile.user_profile.domain.UserProfileId;
 import org.hibernate.Session;

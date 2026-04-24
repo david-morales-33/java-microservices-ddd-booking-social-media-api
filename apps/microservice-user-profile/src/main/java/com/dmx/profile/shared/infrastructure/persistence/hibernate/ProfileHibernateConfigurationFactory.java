@@ -1,4 +1,4 @@
-package com.dmx.profile.shared.infrastructure.hibernate;
+package com.dmx.profile.shared.infrastructure.persistence.hibernate;
 
 import com.dmx.infrastructure.persistence.hibernate.HibernateConfigurationFactory;
 import com.dmx.shared.kernel.Service;

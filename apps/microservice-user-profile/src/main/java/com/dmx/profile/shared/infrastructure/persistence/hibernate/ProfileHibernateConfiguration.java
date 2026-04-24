@@ -1,4 +1,4 @@
-package com.dmx.profile.shared.infrastructure.hibernate;
+package com.dmx.profile.shared.infrastructure.persistence.hibernate;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
