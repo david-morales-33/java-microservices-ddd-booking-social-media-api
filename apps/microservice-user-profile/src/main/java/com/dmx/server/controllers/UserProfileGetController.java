@@ -28,7 +28,7 @@ public class UserProfileGetController extends ApiController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserProfileDTO> index(@PathVariable String id) throws QueryHandlerExecutionException {
+    public ResponseEntity<UserProfileDTO> index(@PathVariable("id") String id) throws QueryHandlerExecutionException {
         UserProfileResponse user = ask(new FindUserProfileQuery(id));
         return ResponseEntity.ok().body(user.response());
     }
