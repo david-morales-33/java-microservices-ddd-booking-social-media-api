@@ -16,7 +16,9 @@ public final class AppNotificationDomainEventSubscribersInformation {
             Class<? extends DomainEvent> eventClass = subscriber.subscribedTo();
             String eventName = getEventName(eventClass);
 
-            this.subscribers.computeIfAbsent(eventName, k -> new ArrayList<>()).add(subscriber);
+            this.subscribers
+                    .computeIfAbsent(eventName, k -> new ArrayList<>())
+                    .add(subscriber);
         }
     }
 

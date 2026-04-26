@@ -1,10 +1,12 @@
-package com.dmx.app_notification.shared.infrastructure.bus.event;
+package com.dmx.social_graph.shared.infrastructure.bus.event;
 
 import com.dmx.infrastructure.bus.event.DomainEventsInformation;
+import com.dmx.shared.kernel.Service;
 
-public class AppNotificationDomainEventInformation extends DomainEventsInformation {
+@Service
+public class SocialGraphDomainEventInformation extends DomainEventsInformation {
     @Override
     protected String getPackageToScan() {
-        return "com.dmx.app_notification";
+        return "com.dmx.social_graph";
     }
 }

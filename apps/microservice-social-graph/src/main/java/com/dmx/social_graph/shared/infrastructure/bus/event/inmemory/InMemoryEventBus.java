@@ -4,16 +4,16 @@ import com.dmx.shared.kernel.events.DomainEvent;
 import com.dmx.bus.event.DomainEventSubscriber;
 import com.dmx.bus.event.EventBus;
 import com.dmx.shared.kernel.Service;
-import com.dmx.social_graph.shared.infrastructure.bus.event.DomainEventSubscribersInformation;
+import com.dmx.social_graph.shared.infrastructure.bus.event.SocialGraphDomainEventSubscribersInformation;
 
 import java.util.List;
 
 @Service
 public class InMemoryEventBus implements EventBus {
 
-    private final DomainEventSubscribersInformation registry;
+    private final SocialGraphDomainEventSubscribersInformation registry;
 
-    public InMemoryEventBus(DomainEventSubscribersInformation registry) {
+    public InMemoryEventBus(SocialGraphDomainEventSubscribersInformation registry) {
         this.registry = registry;
     }
 

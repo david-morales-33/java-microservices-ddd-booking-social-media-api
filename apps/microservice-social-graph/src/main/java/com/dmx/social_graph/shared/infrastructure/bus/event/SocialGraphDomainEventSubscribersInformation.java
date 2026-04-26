@@ -7,10 +7,10 @@ import com.dmx.shared.kernel.Service;
 import java.util.*;
 
 @Service
-public final class DomainEventSubscribersInformation {
+public final class SocialGraphDomainEventSubscribersInformation {
     private final Map<String, List<DomainEventSubscriber<?>>> subscribers = new HashMap<>();
 
-    public DomainEventSubscribersInformation(List<DomainEventSubscriber<?>> subscribersList) {
+    public SocialGraphDomainEventSubscribersInformation(List<DomainEventSubscriber<?>> subscribersList) {
         for (DomainEventSubscriber<?> subscriber : subscribersList) {
 
             Class<? extends DomainEvent> eventClass = subscriber.subscribedTo();

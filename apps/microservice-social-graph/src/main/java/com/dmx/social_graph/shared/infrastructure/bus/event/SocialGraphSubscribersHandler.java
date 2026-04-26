@@ -1,4 +1,4 @@
-package com.dmx.app_notification.shared.infrastructure.bus.event;
+package com.dmx.social_graph.shared.infrastructure.bus.event;
 
 import com.dmx.bus.event.DomainEventSubscriber;
 import com.dmx.shared.kernel.Service;
@@ -7,10 +7,10 @@ import com.dmx.shared.kernel.events.DomainEvent;
 import java.util.List;
 
 @Service
-public final class AppNotificationSubscribersHandler {
-    private final AppNotificationDomainEventSubscribersInformation information;
+public final class SocialGraphSubscribersHandler {
+    private final SocialGraphDomainEventSubscribersInformation information;
 
-    public AppNotificationSubscribersHandler(AppNotificationDomainEventSubscribersInformation information) {
+    public SocialGraphSubscribersHandler(SocialGraphDomainEventSubscribersInformation information) {
         this.information = information;
     }
 
