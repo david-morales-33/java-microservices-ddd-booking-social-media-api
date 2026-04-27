@@ -5,6 +5,7 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 public abstract class ElasticsearchClientAdapter {
     private final ElasticsearchClient client;
@@ -23,7 +24,7 @@ public abstract class ElasticsearchClientAdapter {
         return indexPrefix;
     }
 
-    public void persist(String moduleName, String id, HashMap<String, Serializable> plainBody) throws IOException {
+    public void persist(String moduleName, String id, Map<String, Serializable> plainBody) throws IOException {
         client.index(i -> i
                 .index(indexFor(moduleName))
                 .id(id)

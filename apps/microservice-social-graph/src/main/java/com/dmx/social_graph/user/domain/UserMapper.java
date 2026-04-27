@@ -2,6 +2,7 @@ package com.dmx.social_graph.user.domain;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 public final class UserMapper {
     public static HashMap<String, Serializable> toPlainData(UserDTO user) {
@@ -13,7 +14,7 @@ public final class UserMapper {
         }};
     }
 
-    public static UserDTO toDTO(HashMap<String, Serializable> plainData) {
+    public static UserDTO toDTO(Map<String, Object> plainData) {
         return new UserDTO(
                 (String) plainData.get("id"),
                 (String) plainData.get("name"),

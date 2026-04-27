@@ -37,6 +37,26 @@ public abstract class ElasticsearchRepository<T> {
         }
     }
 
+    protected Optional<T> byId(String id, Function<Map<String, Object>, T> mapper) {
+        try {
+            var response = client.client().get(
+                    g -> g
+                            .index(client.indexFor(moduleName()))
+                            .id(id),
+                    (Class<Map<String, Object>>) (Class<?>) Map.class
+            );
+
+            if (!response.found()) {
+                return Optional.empty();
+            }
+
+            return Optional.ofNullable(mapper.apply(response.source()));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     protected List<T> searchByCriteria(Criteria criteria, Function<Map<String, Object>, T> unserializer) {
         return Collections.emptyList();
     }
