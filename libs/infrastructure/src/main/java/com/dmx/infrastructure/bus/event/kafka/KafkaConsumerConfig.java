@@ -23,9 +23,7 @@ public abstract class KafkaConsumerConfig {
         );
     }
 
-    protected ConsumerFactory<String, String> consumerFactory() throws ParameterNotExist {
-        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
-    }
+    abstract protected ConsumerFactory<String, String> consumerFactory() throws ParameterNotExist;
 
     protected ConcurrentKafkaListenerContainerFactory<String, String> factory() throws ParameterNotExist {
         ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();

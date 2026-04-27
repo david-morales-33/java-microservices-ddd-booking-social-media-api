@@ -11,7 +11,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 
 import java.lang.reflect.InvocationTargetException;
 
-@Configuration
+//@Configuration
 public class SocialGraphKafkaConsumerListener {
     private final SocialGraphDomainEventDeserializer deserializer;
     private final SocialGraphSubscribersHandler handler;
@@ -24,11 +24,11 @@ public class SocialGraphKafkaConsumerListener {
         this.handler = handler;
     }
 
-    @KafkaListener(
-            topics = "cdc.user_profile.public.tbl_outbox_event",
-            groupId = "profile-group")
+//    @KafkaListener(
+//            topics = "cdc.user_profile.public.tbl_outbox_event",
+//            groupId = "profile-group")
     public void listen(String message) throws JsonProcessingException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException{
         DomainEvent event = deserializer.deserialize(message);
-        System.out.println(event.toPrimitives());
+        handler.handle(event);
     }
 }

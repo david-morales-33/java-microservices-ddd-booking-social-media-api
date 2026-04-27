@@ -6,6 +6,8 @@ import com.dmx.social_graph.shared.infrastructure.config.Parameter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.KafkaListenerContainerFactory;
+import org.springframework.kafka.core.ConsumerFactory;
+import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 
 @Configuration
@@ -14,10 +16,17 @@ public class SocialGraphKafkaConsumerConfiguration extends KafkaConsumerConfig {
 
     public SocialGraphKafkaConsumerConfiguration(Parameter config) {
         this.config = config;
+
     }
 
     @Override
     protected String bootstrapServers() throws ParameterNotExist {
+        System.out.println(String.format(
+                "%s:%d",
+                config.get("SOCIAL_GRAPH_KAFKA_BOOTSTRAP_SERVER"),
+                config.getInt("SOCIAL_GRAPH_KAFKA_PORT")
+        ));
+
         return String.format(
                 "%s:%d",
                 config.get("SOCIAL_GRAPH_KAFKA_BOOTSTRAP_SERVER"),
@@ -28,6 +37,12 @@ public class SocialGraphKafkaConsumerConfiguration extends KafkaConsumerConfig {
     @Override
     protected String groupIdConfig() throws ParameterNotExist {
         return config.get("SOCIAL_GRAPH_KAFKA_GROUP_ID");
+    }
+
+    @Bean
+    @Override
+    public  ConsumerFactory<String, String> consumerFactory() throws ParameterNotExist {
+        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
     }
 
     @Bean

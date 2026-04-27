@@ -1,0 +1,32 @@
+{
+  "mappings": {
+    "properties": {
+      "userId": {
+        "type": "keyword"
+      },
+      "followerId": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "nickname": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "photo": {
+        "type": "keyword",
+        "index": false
+      }
+    }
+  }
+}

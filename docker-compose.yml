@@ -15,7 +15,7 @@ services:
       - "9092:9092"
     environment:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092, PLAINTEXT_HOST://localhost:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   elasticsearch:
@@ -48,7 +48,7 @@ services:
     volumes:
       - social_graph_db_data:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U admin -d management_booking_social_media_social_graph" ]
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d management_booking_social_media_social_graph" ]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -70,7 +70,7 @@ services:
     volumes:
       - user_profile_db_data:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U admin -d management_booking_social_media_user_profile" ]
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d management_booking_social_media_user_profile" ]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -92,7 +92,7 @@ services:
     volumes:
       - app_notification_db_data:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U admin -d management_booking_social_media_app_notification" ]
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d management_booking_social_media_app_notification" ]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -105,6 +105,8 @@ services:
     depends_on:
       social-graph-db:
         condition: service_healthy
+      kafka:
+        condition: service_started
       elasticsearch:
         condition: service_started
     ports:
@@ -120,6 +122,8 @@ services:
     depends_on:
       user-profile-db:
         condition: service_healthy
+      kafka:
+        condition: service_started
     ports:
       - "8091:8090"
     volumes:
@@ -133,6 +137,8 @@ services:
     depends_on:
       app-notification-db:
         condition: service_healthy
+      kafka:
+        condition: service_started
     ports:
       - "8092:8090"
     volumes:
