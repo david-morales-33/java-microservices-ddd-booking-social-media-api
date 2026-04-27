@@ -29,6 +29,6 @@ public class SocialGraphKafkaConsumerListener {
             groupId = "profile-group")
     public void listen(String message) throws JsonProcessingException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException{
         DomainEvent event = deserializer.deserialize(message);
-        handler.handle(event);
+        System.out.println(event.toPrimitives());
     }
 }
